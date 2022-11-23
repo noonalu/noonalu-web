@@ -1,13 +1,12 @@
 <script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+	import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
 	<!-- Root view of our app -->
-	<p>
-		<router-link to="/">Go to Home (landing)</router-link>
-		<router-link to="/cal">Go to Calendar</router-link>
-	</p>
-	<router-view></router-view>
+	<HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
