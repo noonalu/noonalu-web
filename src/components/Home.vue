@@ -25,6 +25,29 @@
 	<!-- <div id="video"></div> -->
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+	<div class="content-blob">
+		<div class="content-text">
+			<h2>how much better?</h2>
+			<p>glad you asked!</p>
+			<p>no idea yet. we're still coding the darn thing.</p>
+		</div>
+
+		<div class="content-rect"></div>
+	</div>
+	<div class="content-blob">
+		<div class="content-rect"></div>
+
+		<div class="content-text">
+			<h2>really? no idea?</h2>
+			<p>yup!</p>
+		</div>
+	</div>
+
+	<footer>
+
+	</footer>
+
 </template>
 
 <style scoped lang="scss">
@@ -34,7 +57,6 @@
 		width: 100%;
 		display: flex;
 		justify-content: flex-end;
-		// border-bottom: 2px solid black;
 
 		#links {
 			margin-right: 2rem;
@@ -80,11 +102,42 @@
 
 	iframe {
 		display: block;
-		width: 600px;
-		height: 300px;
-		// background-color: #333;
+		width: 800px;
+		height: 450px;
 		border-radius: 8px;
 		margin: 0 auto;
+	}
+
+	// MARK: Content
+
+	.content-blob {
+		margin: 10rem auto;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 60%;
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		.content-text, .content-rect {
+			width: 40%;
+			display: inline-block;
+		}
+		.content-rect {
+			flex-shrink: 1;
+			background: #d9d9d9;
+			border-radius: 8px;
+			width: 500px;
+			height: 300px;
+		}
+	}
+
+	// MARK: Footer
+
+	footer {
+
 	}
 
 
