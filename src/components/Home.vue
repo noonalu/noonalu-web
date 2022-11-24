@@ -3,54 +3,74 @@
 
 <template>
 
-	<nav>
-		<div id="links">
-			<a href="#">features</a>
-			<a href="#">pricing</a>
-			<a href="#">about</a>
-		</div>
-	</nav>
+	<div id="container">
+		<nav>
+			<div id="links">
+				<a href="#">features</a>
+				<a href="#">pricing</a>
+				<a href="#">about</a>
+			</div>
+		</nav>
 
-	<div id="header">
-		<!-- <div id="header-bg"></div> -->
-		<img src="../assets/logo-full-2.svg"/>
-		<div>
-			<!-- <h1>Noonalu</h1> -->
-			<p><i>Schedule things, probably.</i></p>
+		<div id="header">
+			<!-- <div id="header-bg"></div> -->
+			<img src="../assets/logo-full-2.svg"/>
+			<div>
+				<!-- <h1>Noonalu</h1> -->
+				<p><i>Schedule things, probably.</i></p>
+			</div>
+		</div>
+
+		<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
+
+		<div id="video"></div>
+		<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+
+		<div class="content-blob">
+			<div class="content-text">
+				<h2>how much better?</h2>
+				<p>glad you asked!</p>
+				<p>no idea yet. we're still coding the darn thing.</p>
+			</div>
+
+			<div class="content-rect"></div>
+		</div>
+		<div class="content-blob">
+			<div class="content-rect"></div>
+
+			<div class="content-text">
+				<h2>really? no idea?</h2>
+				<p>yup!</p>
+			</div>
 		</div>
 	</div>
 
-	<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
-
-	<!-- <div id="video"></div> -->
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-	<div class="content-blob">
-		<div class="content-text">
-			<h2>how much better?</h2>
-			<p>glad you asked!</p>
-			<p>no idea yet. we're still coding the darn thing.</p>
-		</div>
-
-		<div class="content-rect"></div>
-	</div>
-	<div class="content-blob">
-		<div class="content-rect"></div>
-
-		<div class="content-text">
-			<h2>really? no idea?</h2>
-			<p>yup!</p>
-		</div>
-	</div>
-
+	<!-- Outside of container for flexbox magics -->
 	<footer>
-
+		<h2>Noonalu</h2>
+		<p><i>Schedule things, probably.</i></p>
 	</footer>
 
 </template>
 
 <style scoped lang="scss">
+
+	html, body {
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+	}
+
+	.content {
+		flex: 1 0 auto;
+	}
+
+	footer {
+		flex-shrink: 0;
+	}
 
 	nav {
 		display: inline-block;
@@ -100,12 +120,13 @@
 		text-align: center
 	}
 
-	iframe {
+	#video {
 		display: block;
 		width: 800px;
 		height: 450px;
 		border-radius: 8px;
 		margin: 0 auto;
+		background-color: rgba(#181a1b, 0.8);
 	}
 
 	// MARK: Content
@@ -137,7 +158,18 @@
 	// MARK: Footer
 
 	footer {
+		background-color: #181a1b;
+		padding: 0 20rem;
+		color: white;
 
+		h2 {
+			margin: 0;
+			padding: 20px;
+		}
+
+		p {
+			font-size: 1rem;
+		}
 	}
 
 
