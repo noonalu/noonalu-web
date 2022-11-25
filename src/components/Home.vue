@@ -24,21 +24,28 @@
 
 			<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
 
-			<div id="video"></div>
-			<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+			<div id="video">
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
 
 
-			<div class="content-blob">
+			<div class="content-blob blob-first">
 				<div class="content-text">
 					<h2>how much better?</h2>
 					<p>glad you asked!</p>
 					<p>no idea yet. we're still coding the darn thing.</p>
 				</div>
 
-				<div class="content-rect"></div>
+				<div class="content-rect">
+					<img src="../assets/graph.png" />
+				</div>
 			</div>
-			<div class="content-blob">
-				<div class="content-rect"></div>
+
+
+			<div class="content-blob blob-second">
+				<div class="content-rect">
+					<img src="../assets/shrug.png" />
+				</div>
 
 				<div class="content-text">
 					<h2>really? no idea?</h2>
@@ -147,6 +154,15 @@
 			font-size: 2rem;
 		}
 
+		img {
+			width: 100%;
+			height: 100%;
+			box-shadow: 0px 2px 3px 0px rgba(black, 0.2);
+			// box-shadow: 0px 2px 0px 5px rgba(black, 1.0);
+			// border: 1px solid gray;
+			border-radius: 8px;
+		}
+
 		.content-text, .content-rect {
 			width: 40%;
 			display: inline-block;
@@ -185,6 +201,55 @@
 		p {
 			font-size: 1rem;
 			margin: 10px 0 0 0;
+		}
+	}
+
+
+	@media screen and (max-width: 800px) {
+
+		nav {
+			justify-content: center;
+
+			#links {
+				margin-right: 0;
+			}
+		}
+
+		#header {
+			width: 100%;
+			margin-right: 0;
+
+			img {
+				max-width: 20rem;
+			}
+		}
+
+		#video {
+			width: 90%;
+			height: 250px;
+		}
+
+		.blob-first {
+			// display: flex;
+			// flex-direction: column-reverse;
+		}
+		.blob-second {
+			// display: flex;
+			// flex-direction: column;
+		}
+
+		.content-blob {
+			width: 90%;
+			display: block;
+
+			.content-text {
+				width: 80%;
+			}
+
+			.content-rect {
+				width: 100%;
+				height: 250px;
+			}
 		}
 	}
 
