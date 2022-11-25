@@ -3,55 +3,60 @@
 
 <template>
 
-	<div id="container">
-		<nav>
-			<div id="links">
-				<a href="#">features</a>
-				<a href="#">pricing</a>
-				<a href="#">about</a>
-			</div>
-		</nav>
+	<div id="container-and-footer">
+		<div id="container">
+			<nav>
+				<div id="links">
+					<a href="#">features</a>
+					<a href="#">pricing</a>
+					<a href="#">about</a>
+				</div>
+			</nav>
 
-		<div id="header">
-			<!-- <div id="header-bg"></div> -->
-			<img src="../assets/logo-full-2.svg"/>
-			<div>
-				<!-- <h1>Noonalu</h1> -->
-				<p><i>Schedule things, probably.</i></p>
+			<div id="header">
+				<!-- <div id="header-bg"></div> -->
+				<img src="../assets/logo-full-2.svg"/>
+				<div>
+					<!-- <h1>Noonalu</h1> -->
+					<p><i>Schedule things, probably.</i></p>
+				</div>
+			</div>
+
+			<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
+
+			<div id="video"></div>
+			<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+
+			<div class="content-blob">
+				<div class="content-text">
+					<h2>how much better?</h2>
+					<p>glad you asked!</p>
+					<p>no idea yet. we're still coding the darn thing.</p>
+				</div>
+
+				<div class="content-rect"></div>
+			</div>
+			<div class="content-blob">
+				<div class="content-rect"></div>
+
+				<div class="content-text">
+					<h2>really? no idea?</h2>
+					<p>yup!</p>
+				</div>
 			</div>
 		</div>
 
-		<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
-
-		<div id="video"></div>
-		<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-
-
-		<div class="content-blob">
-			<div class="content-text">
-				<h2>how much better?</h2>
-				<p>glad you asked!</p>
-				<p>no idea yet. we're still coding the darn thing.</p>
+		<!-- Outside of container for flexbox magics -->
+		<footer>
+			<div id="logo-title">
+				<img src="../assets/logo.svg" />
+				<h2>Noonalu</h2>
 			</div>
+			<p><i>Schedule things, probably.</i></p>
+		</footer>
 
-			<div class="content-rect"></div>
-		</div>
-		<div class="content-blob">
-			<div class="content-rect"></div>
-
-			<div class="content-text">
-				<h2>really? no idea?</h2>
-				<p>yup!</p>
-			</div>
-		</div>
 	</div>
-
-	<!-- Outside of container for flexbox magics -->
-	<footer>
-		<h2>Noonalu</h2>
-		<p><i>Schedule things, probably.</i></p>
-	</footer>
-
 </template>
 
 <style scoped lang="scss">
@@ -60,16 +65,16 @@
 		height: 100%;
 	}
 
-	body {
+	#container-and-footer {
 		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
-	.content {
+	// Surrounding thing to make footer sticky
+	// https://css-tricks.com/couple-takes-sticky-footer/
+	#container {
 		flex: 1 0 auto;
-	}
-
-	footer {
-		flex-shrink: 0;
 	}
 
 	nav {
@@ -158,19 +163,29 @@
 	// MARK: Footer
 
 	footer {
+		flex-shrink: 0;
 		background-color: #181a1b;
-		padding: 0 20rem;
+		padding: 2% 15%;
 		color: white;
 
-		h2 {
-			margin: 0;
-			padding: 20px;
+		#logo-title {
+			display: flex;
+			align-items: center;
+
+			img {
+				height: 1.5rem;
+			}
+
+			h2 {
+				margin: 2px 0 0 2px;
+				font-size: 1.5rem;
+			}
 		}
 
 		p {
 			font-size: 1rem;
+			margin: 10px 0 0 0;
 		}
 	}
-
 
 </style>
