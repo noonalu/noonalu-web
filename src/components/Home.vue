@@ -14,15 +14,13 @@
 			</nav>
 
 			<div id="header">
-				<!-- <div id="header-bg"></div> -->
 				<img src="../assets/logo-full-2.svg"/>
 				<div>
-					<!-- <h1>Noonalu</h1> -->
 					<p><i>Schedule things, probably.</i></p>
 				</div>
 			</div>
 
-			<p id="float-tagline">Noonalu is when2meet, but <em>better</em>.<br><sub>(we promise 👉👈)</sub></p>
+			<p id="float-tagline">We make time for everyone.<br /><sub>(we pwomise 👉👈)</sub></p>
 
 			<div id="video">
 				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/0fOUf1JwzBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -129,7 +127,12 @@
 
 	#float-tagline {
 		margin: 10rem 0;
-		text-align: center
+		text-align: center;
+
+		sub {
+			font-size: 1rem;
+			display: block;
+		}
 	}
 
 	#video {
@@ -148,7 +151,8 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		width: 60%;
+		gap: 30px;
+		width: 70%;
 
 		h2 {
 			font-size: 2rem;
@@ -157,9 +161,7 @@
 		img {
 			width: 100%;
 			height: 100%;
-			box-shadow: 0px 2px 3px 0px rgba(black, 0.2);
-			// box-shadow: 0px 2px 0px 5px rgba(black, 1.0);
-			// border: 1px solid gray;
+			box-shadow: 0px 3px 4px 0px rgba(black, 0.2);
 			border-radius: 8px;
 		}
 
@@ -169,10 +171,12 @@
 		}
 		.content-rect {
 			flex-shrink: 1;
-			background: #d9d9d9;
 			border-radius: 8px;
-			width: 500px;
-			height: 300px;
+			max-width: 500px;
+			max-height: 300px;
+			width: auto;
+			aspect-ratio: 16 / 9;
+
 		}
 	}
 
@@ -193,7 +197,7 @@
 			}
 
 			h2 {
-				margin: 2px 0 0 2px;
+				margin: 2px 0 0 10px;
 				font-size: 1.5rem;
 			}
 		}
@@ -204,6 +208,11 @@
 		}
 	}
 
+	@media screen and (max-width: 1200px) {
+		.content-blob {
+			width: 80%;
+		}
+	}
 
 	@media screen and (max-width: 800px) {
 
@@ -229,15 +238,6 @@
 			height: 250px;
 		}
 
-		.blob-first {
-			// display: flex;
-			// flex-direction: column-reverse;
-		}
-		.blob-second {
-			// display: flex;
-			// flex-direction: column;
-		}
-
 		.content-blob {
 			width: 90%;
 			display: block;
@@ -247,8 +247,28 @@
 			}
 
 			.content-rect {
-				width: 100%;
-				height: 250px;
+				max-width: 80%;
+				max-height: 80%;
+			}
+		}
+
+		.blob-first {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+		.blob-second {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.content-blob {
+			width: 95%;
+
+			.content-rect {
+				max-width: 95%;
+				max-height: 95%;
 			}
 		}
 	}
