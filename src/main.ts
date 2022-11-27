@@ -5,7 +5,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Components
 import Home from "./components/Home.vue"
-import Calendar from "./components/Calendar.vue"
+import Calendar from "./components/Calendar/Calendar.vue"
 
 // Routing
 const routes = [
