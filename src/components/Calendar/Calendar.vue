@@ -1,6 +1,25 @@
+
+
 <script setup lang="ts">
 
-import Day from './Day.vue';
+	import Day from './Day.vue'
+
+
+	export interface Props {
+		// Non contiguous set of days
+		// ("Mon/Tue/Sun", "Tue/Thurs", etc.)
+		// For now anything goes
+		// dayNames: string[]
+		dayModels: DayModel[]
+	}
+
+	// Initialize props
+	defineProps<Props>()
+
+	// TOOD: For initializing with defaults
+	// const props = withDefaults(defineProps<Props>(),{
+	// 	dayNames: () => ['sun']
+	// })
 
 </script>
 
@@ -19,13 +38,14 @@ import Day from './Day.vue';
 				<p>12pm</p>
 				<p>1pm</p>
 			</div>
+
+			<Day v-for="(day, i) in dayModels" :dayModel="day"/>
+<!--
 			<Day name="Sun"/>
 			<Day name="Mon"/>
 			<Day name="Tue"/>
 			<Day name="Wed"/>
-			<Day name="Thu"/>
-			<!-- <Day name="Fri"></Day> -->
-			<!-- <Day name="Sat"></Day> -->
+			<Day name="Thu"/> -->
 		</div>
 	</div>
 

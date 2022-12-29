@@ -1,8 +1,12 @@
 <script setup lang="ts">
-	import Increment from './Increment.vue';
 
+	import Increment from './Increment.vue'
+	import DayModel from '../../models/DayModel'
+
+	// TODO: architecture?? MVVM?
 	const props = defineProps({
-		name: String
+		dayModel: DayModel,
+		// hours: number[]
 	})
 
 	var hours = [9, 10, 11, 12, 1, 2, 3, 4, 5]
@@ -11,8 +15,8 @@
 
 <template>
     <div class="day">
-    	<h3>{{ name }}</h3>
-		<Increment v-for="n in 10"/>
+    	<h3>{{ dayModel.name }}</h3>
+		<Increment v-for="n in hours.count"/>
 	</div>
 </template>
 
