@@ -9,12 +9,63 @@
 		// Non contiguous set of days
 		// ("Mon/Tue/Sun", "Tue/Thurs", etc.)
 		// For now anything goes
-		// dayNames: string[]
 		dayModels: DayModel[]
+		// pre: MUST be on an hour boundary (1am, 3pm, etc.)
+		startTime: Date
+		endTime: Date
 	}
 
 	// Initialize props
-	defineProps<Props>()
+	const props = defineProps<Props>()
+
+	function isMorning(hour: number): bool {
+		return hour <= 12
+	}
+
+	function isAfternoon(hour: number): bool {
+		return !isMorning(hour)
+	}
+
+	function dateRange(): [number] {
+		// Create a range of hours that can be returned
+		// For instance, if our prop is
+		//		startTime: 9am
+		//		endTime: 4pm
+		// This method would return
+		//		[9, 10, 11, 12, 1, 2, 3, 4]
+
+		let hours: number[] = []
+
+		const startHour = props.startTime.getHours()
+		const endHour = props.endTime.getHours()
+
+		console.log("startHour: " + startHour)
+		console.log("endHour: " + endHour)
+
+		if (isMorning(startHour) && isAfternoon(endHour)) {
+			for (var i = startHour; i <= 12; i++) {
+				hours.push(i)
+			}
+
+			// start at "1" that gets converted
+			for (var i = 13; i <= endHour; i++) {
+				hours.push(i - 12)
+			}
+		} else {
+			hours.push(-1)
+			// Loop directly
+			for (var i = startHour; i <= endHour; i++) {
+				hours.push(i)
+			}
+		}
+
+
+
+		return hours
+	}
+
+
+
 
 	// TOOD: For initializing with defaults
 	// const props = withDefaults(defineProps<Props>(),{
@@ -31,21 +82,17 @@
 		<div id="calendar">
 
 			<div id="legend">
+				<!-- Dummy first node to leave space for header -->
 				<p></p>
-				<p>9am</p>
-				<p>10am</p>
+
+				<p v-for="(hour, i) in dateRange()">{{hour}}</p>
+				<!-- <p>10am</p>
 				<p>11am</p>
 				<p>12pm</p>
-				<p>1pm</p>
+				<p>1pm</p> -->
 			</div>
 
-			<Day v-for="(day, i) in dayModels" :dayModel="day"/>
-<!--
-			<Day name="Sun"/>
-			<Day name="Mon"/>
-			<Day name="Tue"/>
-			<Day name="Wed"/>
-			<Day name="Thu"/> -->
+			<Day v-for="(day, i) in dayModels" :dayModel="day" />
 		</div>
 	</div>
 
