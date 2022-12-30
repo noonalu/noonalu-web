@@ -3,7 +3,7 @@
 <script setup lang="ts">
 
 	import Day from './Day.vue'
-
+	import { computed } from 'vue'
 
 	export interface Props {
 		// Non contiguous set of days
@@ -26,7 +26,8 @@
 		return !isMorning(hour)
 	}
 
-	function dateRange(): [number] {
+	// TODO: Make computed, didn't do it because <vague compiler complaints>
+	function timeRange(): number[] {
 		// Create a range of hours that can be returned
 		// For instance, if our prop is
 		//		startTime: 9am
@@ -59,13 +60,14 @@
 			}
 		}
 
-
-
 		return hours
 	}
 
-
-
+	// Needed for CSS binding
+	const timeRangeLength = computed<number>(() => {
+	// function timeRangeLength(): number {
+		return timeRange().length * 2
+	})
 
 	// TOOD: For initializing with defaults
 	// const props = withDefaults(defineProps<Props>(),{
@@ -84,12 +86,7 @@
 			<div id="legend">
 				<!-- Dummy first node to leave space for header -->
 				<p></p>
-
-				<p v-for="(hour, i) in dateRange()">{{hour}}</p>
-				<!-- <p>10am</p>
-				<p>11am</p>
-				<p>12pm</p>
-				<p>1pm</p> -->
+				<p v-for="(hour, i) in timeRange()">{{ hour }}</p>
 			</div>
 
 			<Day v-for="(day, i) in dayModels" :dayModel="day" />
@@ -122,15 +119,6 @@
 			// REDO ALL STYLING GOING LEFT TO RIGHT TO STAY SANE
 			// AAAHHHHHHH
 
-			&:nth-child(2),
-			&:last-child {
-				// padding: 0 10px;
-			}
-
-			&:first-child {
-				// padding: 0;
-			}
-
 			// Border radius only on edges of first & last "real" col
 			// (I can't believe this works...)
 			&:nth-child(2) {
@@ -150,7 +138,7 @@
 
 		#legend {
 			display: grid;
-			grid-template-rows: repeat(6, 40px);
+			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
 			row-gap: 5px;
 			background-color: white;
 
