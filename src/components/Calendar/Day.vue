@@ -4,19 +4,22 @@
 	import DayModel from '../../models/DayModel'
 
 	// TODO: architecture?? MVVM?
-	const props = defineProps({
-		dayModel: DayModel,
-		// hours: number[]
-	})
+	export interface Props {
+		dayModel: DayModel
+		timeRangeLength: number
+	}
 
-	var hours = [9, 10, 11, 12, 1, 2, 3, 4, 5]
+	const props = defineProps<Props>()
+
+	// TODO: handle relative index reactive click from Increment component
+	// and bubble up to Calendar component as a unified (i.e., selected) range
 
 </script>
 
 <template>
     <div class="day">
     	<h3>{{ dayModel.name }}</h3>
-		<Increment v-for="n in hours.count"/>
+		<Increment v-for="n in timeRangeLength"/>
 	</div>
 </template>
 
@@ -25,9 +28,6 @@
 	.day {
 		display: grid;
 		row-gap: 5px;
-		// TODO: Might want to map days dynamically here...
-		// and remove `height: 40px` on `.increment`
-		// grid-template-rows: repeat()
 	}
 
 	h3 {

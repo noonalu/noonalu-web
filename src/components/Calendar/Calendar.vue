@@ -40,14 +40,10 @@
 		const startHour = props.startTime.getHours()
 		const endHour = props.endTime.getHours()
 
-		console.log("startHour: " + startHour)
-		console.log("endHour: " + endHour)
-
 		if (isMorning(startHour) && isAfternoon(endHour)) {
 			for (var i = startHour; i <= 12; i++) {
 				hours.push(i)
 			}
-
 			// start at "1" that gets converted
 			for (var i = 13; i <= endHour; i++) {
 				hours.push(i - 12)
@@ -63,16 +59,18 @@
 		return hours
 	}
 
-	// Needed for CSS binding
+
+	// MARK: CSS Binding constants
+	// Used for ranges of the calendar page
+
 	const timeRangeLength = computed<number>(() => {
-	// function timeRangeLength(): number {
 		return timeRange().length * 2
 	})
 
-	// TOOD: For initializing with defaults
-	// const props = withDefaults(defineProps<Props>(),{
-	// 	dayNames: () => ['sun']
-	// })
+	const dayRangeLength = computed<number>(() => {
+	// function timeRangeLength(): number {
+		return props.dayModels.length
+	})
 
 </script>
 
@@ -89,7 +87,7 @@
 				<p v-for="(hour, i) in timeRange()">{{ hour }}</p>
 			</div>
 
-			<Day v-for="(day, i) in dayModels" :dayModel="day" />
+			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
 		</div>
 	</div>
 
@@ -113,11 +111,7 @@
 		// we need to do some manual... adjustments.
 		&>div {
 			background-color: rgba(black, 0.2);
-			// padding: 0 5px;
 			padding: 10px;
-
-			// REDO ALL STYLING GOING LEFT TO RIGHT TO STAY SANE
-			// AAAHHHHHHH
 
 			// Border radius only on edges of first & last "real" col
 			// (I can't believe this works...)
@@ -133,7 +127,7 @@
 		display: grid;
 		// column-gap: 8px;
 		// 1 + num days for legend col
-		grid-template-columns: 10% repeat(5, 14%);
+		grid-template-columns: 10% repeat(v-bind('dayRangeLength'), 14%);
 		justify-content: center;
 
 		#legend {
@@ -141,7 +135,6 @@
 			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
 			row-gap: 5px;
 			background-color: white;
-
 
 			// Day cols:
 			// 40 + 5 + 40 = 85
