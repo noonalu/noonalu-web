@@ -19,7 +19,7 @@
 <template>
     <div class="day">
     	<h3>{{ dayModel.name }}</h3>
-		<Increment v-for="n in timeRangeLength"/>
+		<Increment v-for="(n, i) in timeRangeLength" :index="i"/>
 	</div>
 </template>
 
