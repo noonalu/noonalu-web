@@ -45,7 +45,7 @@
 			for (var i = startHour; i <= 12; i++) {
 				hours.push(i)
 			}
-			// start at "1" that gets converted
+			// Start at "1" that gets converted
 			for (var i = 13; i <= endHour; i++) {
 				hours.push(i - 12)
 			}
@@ -59,7 +59,6 @@
 
 		return hours
 	}
-
 
 	// MARK: CSS Binding constants
 	// Used for ranges of the calendar page
@@ -76,29 +75,19 @@
 </script>
 
 <template>
-	<h1>Noonalu</h1>
-
 	<div id="calContainer">
-
 		<div id="calendar">
-
 			<div id="legend">
 				<!-- Dummy first node to leave space for header -->
 				<p></p>
 				<p v-for="(hour, i) in timeRange()">{{ hour }}</p>
 			</div>
-
 			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
 		</div>
 	</div>
-
 </template>
 
 <style scoped lang="scss">
-
-	h1 {
-		text-align: center;
-	}
 
 	#calContainer {
 		margin: 0 auto;
@@ -126,8 +115,6 @@
 		}
 
 		display: grid;
-		// column-gap: 8px;
-		// 1 + num days for legend col
 		grid-template-columns: 10% repeat(v-bind('dayRangeLength'), 14%);
 		justify-content: center;
 
@@ -137,8 +124,7 @@
 			row-gap: 5px;
 			background-color: white;
 
-			// Day cols:
-			// 40 + 5 + 40 = 85
+			// Day cols
 			p {
 				grid-row: span 2;
 				font-size: 1.1rem;
