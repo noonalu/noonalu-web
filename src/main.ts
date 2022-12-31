@@ -30,8 +30,8 @@ const routes = [
 		component: Calendar,
 		props: {
 			dayModels: dayModels,
-			startTime: new Date(null, null, null, 9),
-			endTime: new Date(null, null, null, 15),
+			startTime: new Date(0, 0, 0, 9),
+			endTime: new Date(0, 0, 0, 15),
 
 		}
 	},

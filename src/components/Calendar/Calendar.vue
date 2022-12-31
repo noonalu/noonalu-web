@@ -3,6 +3,7 @@
 <script setup lang="ts">
 
 	import Day from './Day.vue'
+	import DayModel from '../../models/DayModel'
 	import { computed } from 'vue'
 
 	export interface Props {
@@ -18,11 +19,11 @@
 	// Initialize props
 	const props = defineProps<Props>()
 
-	function isMorning(hour: number): bool {
+	function isMorning(hour: number): boolean {
 		return hour <= 12
 	}
 
-	function isAfternoon(hour: number): bool {
+	function isAfternoon(hour: number): boolean {
 		return !isMorning(hour)
 	}
 
