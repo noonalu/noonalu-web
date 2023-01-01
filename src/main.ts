@@ -4,13 +4,37 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Components
-import Home from "./components/Home.vue"
-import Calendar from "./components/Calendar.vue"
+import Home from './components/Home.vue'
+import Calendar from './components/Calendar/Calendar.vue'
+
+
+// Models
+import DayModel from './models/DayModel'
+
+// dummy data lol
+
+const day1 = new DayModel('Mon')
+const day2 = new DayModel('Tue')
+const day3 = new DayModel('Fri')
+const day4 = new DayModel('Sat')
+const dayModels: DayModel[] = [day1, day2, day3, day4]
 
 // Routing
 const routes = [
-	{ path: '/', component: Home },
-	{ path: '/cal', component: Calendar },
+
+	{
+		path: '/', component: Home
+	},
+	{
+		path: '/cal',
+		component: Calendar,
+		props: {
+			dayModels: dayModels,
+			startTime: new Date(0, 0, 0, 9),
+			endTime: new Date(0, 0, 0, 15),
+
+		}
+	},
 ]
 
 const router = createRouter({
