@@ -3,8 +3,10 @@
 
 <template>
 	<nav>
+		<img src="../../assets/logo-horizontal.svg"/>
 		<div id="links">
-			<a href="#">features</a>
+			<a href="#">calendar</a>
+			<a href="#/features">features</a>
 			<a href="#">pricing</a>
 			<a href="#">about</a>
 		</div>
@@ -16,11 +18,16 @@ nav {
 		display: inline-block;
 		width: 100%;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 
 		#links {
 			margin-right: 2rem;
 			display: flex;
+		}
+
+		img {
+			width: 240px;
+			margin-left: 2rem;
 		}
 
 		a {
