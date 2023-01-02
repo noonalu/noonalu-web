@@ -4,9 +4,8 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Components
-import Home from './components/Home.vue'
 import Calendar from './components/Calendar/Calendar.vue'
-
+import Features from './components/features/Features.vue'
 
 // Models
 import DayModel from './models/DayModel'
@@ -21,12 +20,8 @@ const dayModels: DayModel[] = [day1, day2, day3, day4]
 
 // Routing
 const routes = [
-
 	{
-		path: '/', component: Home
-	},
-	{
-		path: '/cal',
+		path: '/',
 		component: Calendar,
 		props: {
 			dayModels: dayModels,
@@ -35,6 +30,10 @@ const routes = [
 
 		}
 	},
+	{
+		path: '/features',
+		component: Features
+	}
 ]
 
 const router = createRouter({

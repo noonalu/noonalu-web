@@ -1,21 +1,12 @@
 <script setup lang="ts">
-import Navbar from "./common/Navbar.vue"
-import Footer from "./common/Footer.vue"
+import Navbar from "../common/Navbar.vue"
+import Footer from "../common/Footer.vue"
 </script>
 
 <template>
-
 	<Navbar />
-
 	<div id="container-and-footer">
 		<div id="container">
-
-			<div id="header">
-				<img src="../assets/logo-full-2.svg"/>
-				<div>
-					<p><i>Schedule things, probably.</i></p>
-				</div>
-			</div>
 
 			<p id="float-tagline">We make time for everyone.<br /><sub>(we pwomise 👉👈)</sub></p>
 
@@ -32,14 +23,14 @@ import Footer from "./common/Footer.vue"
 				</div>
 
 				<div class="content-rect">
-					<img src="../assets/graph.png" />
+					<img src="../../assets/graph.png" />
 				</div>
 			</div>
 
 
 			<div class="content-blob blob-second">
 				<div class="content-rect">
-					<img src="../assets/shrug.png" />
+					<img src="../../assets/shrug.png" />
 				</div>
 
 				<div class="content-text">
@@ -48,11 +39,8 @@ import Footer from "./common/Footer.vue"
 				</div>
 			</div>
 		</div>
-
-		<!-- Outside of container for flexbox magics -->
-		<Footer />
-
 	</div>
+	<Footer />
 </template>
 
 <style scoped lang="scss">

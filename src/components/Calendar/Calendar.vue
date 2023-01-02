@@ -1,10 +1,10 @@
-
-
 <script setup lang="ts">
 
 	import Day from './Day.vue'
 	import DayModel from '../../models/DayModel'
 	import { computed } from 'vue'
+	import Navbar from "../common/Navbar.vue"
+	import Footer from "../common/Footer.vue"
 
 	export interface Props {
 		// Non contiguous set of days
@@ -75,6 +75,7 @@
 </script>
 
 <template>
+	<Navbar />
 	<div id="calContainer">
 		<div id="calendar">
 			<div id="legend">
@@ -85,6 +86,7 @@
 			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
 		</div>
 	</div>
+	<Footer />
 </template>
 
 <style scoped lang="scss">
