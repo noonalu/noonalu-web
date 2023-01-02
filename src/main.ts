@@ -4,7 +4,7 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Components
-import Calendar from './components/Calendar/Calendar.vue'
+import Calendar from './components/calendar/Calendar.vue'
 import Features from './components/features/Features.vue'
 
 // Models
