@@ -23,14 +23,14 @@ import Footer from "../common/Footer.vue"
 				</div>
 
 				<div class="content-rect">
-					<img src="../assets/graph.png" />
+					<img src="../../assets/graph.png" />
 				</div>
 			</div>
 
 
 			<div class="content-blob blob-second">
 				<div class="content-rect">
-					<img src="../assets/shrug.png" />
+					<img src="../../assets/shrug.png" />
 				</div>
 
 				<div class="content-text">
