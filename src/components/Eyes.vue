@@ -15,20 +15,28 @@ onmousemove = (event) => {
 	let eyeX = eyepos.x;
 	let ydiff = eyeY - event.clientY;
 	let xdiff = eyeX - event.clientX;
-	let t = 180
-	if(ydiff < 0){
-		t = 0 
+	let t = 180;
+	if (ydiff < 0) {
+		t = 0;
 	}
 	let rad = Math.atan(xdiff / ydiff);
 
 	let angle = rad / (Math.PI / 180);
-	angle = t - angle
-	console.log(ydiff,xdiff, angle);
+	angle = t - angle;
+	console.log(ydiff, xdiff, angle);
 	increment(angle);
 };
 </script>
 
 <template>
+	<img
+		id="Eyes"
+		:style="{
+			width: '200px',
+			transform: 'rotate(' + rotation + 'deg)',
+		}"
+		src="../assets/logo-full.svg"
+	/>
 	<img
 		id="Eyes"
 		:style="{

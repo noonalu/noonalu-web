@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Eyes from './Eyes.vue';
 </script>
 
 <template>
@@ -19,7 +20,9 @@
 					<p><i>Schedule things, probably.</i></p>
 				</div>
 			</div>
-
+			<div id="header">
+			<Eyes />
+			</div>
 			<p id="float-tagline">We make time for everyone.<br /><sub>(we pwomise 👉👈)</sub></p>
 
 			<div id="video">
