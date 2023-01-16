@@ -2,48 +2,59 @@
 addEventListener("mousemove", (event) => {});
 
 import { ref, reactive } from "vue";
-const rotation = ref(0);
+const leftRot = ref(0);
+const rightRot = ref(0);
 
-function increment(e) {
-	rotation.value = e;
+function updateLeft(e) {
+	leftRot.value = e;
 }
 
-onmousemove = (event) => {
-	let eyes = document.getElementById("Eyes");
-	let eyepos = eyes.getBoundingClientRect();
-	let eyeY = eyepos.y;
-	let eyeX = eyepos.x;
-	let ydiff = eyeY - event.clientY;
-	let xdiff = eyeX - event.clientX;
-	let t = 180;
+function updateRight(e) {
+	rightRot.value = e;
+}
+
+/**
+ * Returns the angle between the eyes and the selected eye and the given mouse positions
+ */
+function eyeMouseAngle(eyeID, mouseX, mouseY) {
+	let eyepos = document.getElementById(eyeID).getBoundingClientRect();
+
+	let xdiff = (eyepos.left + eyepos.right) / 2 - mouseX;
+	let ydiff = (eyepos.top + eyepos.bottom) / 2 - mouseY;
+	// atan only handles angles up to 180, so need to add 180 if the mouse goes above the eyes
+	let t = Math.PI;
 	if (ydiff < 0) {
 		t = 0;
 	}
-	let rad = Math.atan(xdiff / ydiff);
 
-	let angle = rad / (Math.PI / 180);
-	angle = t - angle;
-	console.log(ydiff, xdiff, angle);
-	increment(angle);
+	let angle = t - Math.atan(xdiff / ydiff);
+
+	return angle;
+}
+onmousemove = (event) => {
+	let langle = eyeMouseAngle("Left", event.clientX, event.clientY);
+	let rangle = eyeMouseAngle("Right", event.clientX, event.clientY);
+	updateLeft(langle);
+	updateRight(rangle);
 };
 </script>
 
 <template>
 	<img
-		id="Eyes"
+		id="Left"
 		:style="{
 			width: '200px',
-			transform: 'rotate(' + rotation + 'deg)',
+			transform: 'rotate(' + leftRot + 'rad)',
 		}"
-		src="../assets/logo-full.svg"
+		src="../assets/eye.svg"
 	/>
 	<img
-		id="Eyes"
+		id="Right"
 		:style="{
 			width: '200px',
-			transform: 'rotate(' + rotation + 'deg)',
+			transform: 'rotate(' + rightRot + 'rad)',
 		}"
-		src="../assets/logo-full.svg"
+		src="../assets/eye.svg"
 	/>
 </template>
 
