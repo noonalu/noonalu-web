@@ -14,9 +14,9 @@ function updateRight(e) {
 }
 
 /**
- * Returns the angle between the eyes and the selected eye and the given mouse positions
+ * Returns the angle between the center of a given element with id eyeID, and the selected eye and the given mouse positions
  */
-function eyeMouseAngle(eyeID, mouseX, mouseY) {
+function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
 	let eyepos = document.getElementById(eyeID).getBoundingClientRect();
 
 	let xdiff = (eyepos.left + eyepos.right) / 2 - mouseX;
@@ -40,22 +40,53 @@ onmousemove = (event) => {
 </script>
 
 <template>
-	<img
-		id="Left"
-		:style="{
-			width: '200px',
-			transform: 'rotate(' + leftRot + 'rad)',
-		}"
-		src="../assets/eye.svg"
-	/>
-	<img
-		id="Right"
-		:style="{
-			width: '200px',
-			transform: 'rotate(' + rightRot + 'rad)',
-		}"
-		src="../assets/eye.svg"
-	/>
+	<div :style="{ position: 'relative' }">
+		<div :style="{position:'absolute'}">
+				<img
+					:style="{
+						position: 'absolute',
+						left: '0px',
+						top: '0px',
+					}"
+					src="../assets/o.svg"
+				/>
+
+				<img
+					id="Left"
+					:style="{
+						position: 'absolute',
+						left: '5px',
+						top: '6px',
+						width:'23px',
+						transform: 'rotate(' + leftRot+ 'rad)',
+					}"
+					src="../assets/eye.svg"
+				/>
+		</div>
+		<div :style="{ width: '35px', height: '50px' }">
+			<div :style="{ position: 'absolute' }">
+				<img
+					:style="{
+						position: 'absolute',
+						left: '35px',
+						top: '0%',
+					}"
+					src="../assets/o.svg"
+				/>
+				<img
+					id="Right"
+					:style="{
+						position: 'absolute',
+						left: '40px',
+						top: '6px',
+						width:'23px',
+						transform: 'rotate(' + rightRot + 'rad)',
+					}"
+					src="../assets/eye.svg"
+				/>
+			</div>
+		</div>
+	</div>
 </template>
 
 <style scoped lang="scss"></style>
