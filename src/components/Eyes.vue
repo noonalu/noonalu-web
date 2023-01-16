@@ -1,22 +1,33 @@
 <script setup lang="ts">
 addEventListener("mousemove", (event) => {});
-let rotation = 0;
 
 import { ref } from "vue";
-const count = ref(rotation);
+const rotation = ref(0);
 function increment(e) {
-	console.log(e);
-	count.value = e;
+	rotation.value = e;
 }
+
 onmousemove = (event) => {
-	increment(event.clientX)
-	console.log(event.clientX, event.clientY);
+	let eyes = document.getElementById("Eyes");
+	let eyepos = eyes.getBoundingClientRect();
+	let eyeX = eyepos.bottom + eyepos.top / 2;
+	let eyeY = eyepos.right + eyepos.left / 2;
+
+	let ydiff = eyeY - event.clientY;
+	let xdiff = eyeX - event.clientX;
+
+	let rads = Math.tan(ydiff / xdiff);
+	let angle = rads / (Math.PI / 180);
+
+	console.log(angle);
+
+	increment(angle);
 };
 </script>
 
 <template>
-	<img style="transform: rotate(90deg)" src="../assets/smile.png" />
-	<button @click="increment">Count is: {{ count }}</button>
+	<img id="Eyes" style="transform: rotate(90deg)" src="../assets/smile.png" />
+	<button @click="increment">Count is: {{ rotation }}</button>
 </template>
 
 <style scoped lang="scss"></style>
