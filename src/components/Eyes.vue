@@ -33,7 +33,8 @@ function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
 }
 onmousemove = (event) => {
 	let langle = eyeMouseAngle("Left", event.clientX, event.clientY);
-	let rangle = eyeMouseAngle("Right", event.clientX, event.clientY)-15*0.01745329;
+	let rangle =
+		eyeMouseAngle("Right", event.clientX, event.clientY) - 15 * 0.01745329;
 	updateLeft(langle);
 	updateRight(rangle);
 };
@@ -41,25 +42,25 @@ onmousemove = (event) => {
 
 <template>
 	<div :style="{ position: 'relative' }">
-		<div :style="{position:'absolute'}">
-				<img
-					:style="{
-						position: 'absolute',
-					}"
-					src="../assets/o.svg"
-				/>
+		<div :style="{ position: 'absolute' }">
+			<img
+				:style="{
+					position: 'absolute',
+				}"
+				src="../assets/o.svg"
+			/>
 
-				<img
-					id="Left"
-					:style="{
-						position: 'absolute',
-						left: '5px',
-						top: '6px',
-						width:'23px',
-						transform: 'rotate(' + leftRot+ 'rad)',
-					}"
-					src="../assets/eye.svg"
-				/>
+			<img
+				id="Left"
+				:style="{
+					position: 'absolute',
+					left: '5px',
+					top: '6px',
+					width: '23px',
+					transform: 'rotate(' + leftRot + 'rad)',
+				}"
+				src="../assets/eye.svg"
+			/>
 		</div>
 		<div :style="{ width: '35px', height: '50px' }">
 			<div :style="{ position: 'absolute' }">
@@ -76,7 +77,7 @@ onmousemove = (event) => {
 						position: 'absolute',
 						left: '39.5px',
 						top: '6px',
-						width:'23px',
+						width: '23px',
 						transform: 'rotate(' + rightRot + 'rad)',
 					}"
 					src="../assets/eye.svg"
@@ -86,5 +87,4 @@ onmousemove = (event) => {
 	</div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
