@@ -33,7 +33,7 @@ function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
 }
 onmousemove = (event) => {
 	let langle = eyeMouseAngle("Left", event.clientX, event.clientY);
-	let rangle = eyeMouseAngle("Right", event.clientX, event.clientY);
+	let rangle = eyeMouseAngle("Right", event.clientX, event.clientY)-15*0.01745329;
 	updateLeft(langle);
 	updateRight(rangle);
 };
@@ -45,8 +45,6 @@ onmousemove = (event) => {
 				<img
 					:style="{
 						position: 'absolute',
-						left: '0px',
-						top: '0px',
 					}"
 					src="../assets/o.svg"
 				/>
@@ -69,7 +67,6 @@ onmousemove = (event) => {
 					:style="{
 						position: 'absolute',
 						left: '35px',
-						top: '0%',
 					}"
 					src="../assets/o.svg"
 				/>
@@ -77,7 +74,7 @@ onmousemove = (event) => {
 					id="Right"
 					:style="{
 						position: 'absolute',
-						left: '40px',
+						left: '39.5px',
 						top: '6px',
 						width:'23px',
 						transform: 'rotate(' + rightRot + 'rad)',
@@ -89,4 +86,5 @@ onmousemove = (event) => {
 	</div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
