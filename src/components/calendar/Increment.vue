@@ -32,7 +32,7 @@
 		user-select: none;
 
 		&:hover {
-			background-color: #C95F42;
+			background-color: lighten(#FC7753, 10%);
 		}
 	}
 

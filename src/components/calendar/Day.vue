@@ -91,6 +91,7 @@
 
 	// The selected "day" element
 	.selectedElement {
+		transition: 0.05s background-color;
 		background-color: #FC7753 !important;
 		color: black;
 	}
