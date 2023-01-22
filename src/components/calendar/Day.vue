@@ -11,10 +11,6 @@
 	}
 
 	const props = defineProps<Props>()
-
-	// TODO: handle relative index reactive click from Increment component
-	// and bubble up to Calendar component as a unified (i.e., selected) range
-
 	const emit = defineEmits(['intersects'])
 
 	let dragging: boolean = false
@@ -26,11 +22,18 @@
 	function mousedown(event) {
 		dragging = true
 		console.log("mousedown")
+		// Skip default behavior to prevent edit cursor in Safari
+		// src: https://stackoverflow.com/a/9743380/1431900
+		event.preventDefault()
 	}
 
 	function mouseup(event) {
 		dragging = false
 		console.log("mouseup")
+	}
+
+	function mouseleave(event) {
+		dragging = false
 	}
 
 
@@ -57,12 +60,6 @@
 		intersections.set(index, !intersections.get(index))
 	}
 
-	function childClick(index) {
-
-	}
-
-
-
 </script>
 
 <template>
@@ -71,6 +68,7 @@
 		class="day"
 		@mousedown="mousedown"
 		@mouseup="mouseup"
+		@mouseleave="mouseleave"
 	>
     	<h3>{{ dayModel.name }}</h3>
 		<Increment
@@ -78,7 +76,6 @@
 			:index="i"
 			@child-mouseenter="childMouseenter"
 			@child-mousedown="childMousedown"
-			@child-click="childClick"
 			:class="{ selectedElement: intersections.get(i) }"
 		/>
 	</div>
@@ -89,6 +86,7 @@
 	.day {
 		display: grid;
 		row-gap: 5px;
+		user-select: none;
 	}
 
 	// The selected "day" element

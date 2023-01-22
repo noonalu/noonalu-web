@@ -19,7 +19,6 @@
 		class="increment"
 		@mouseenter="$emit('child-mouseenter', index)"
 		@mousedown="$emit('child-mousedown', index)"
-		@click="$emit('child-click', index)"
 	></div>
 </template>
 
@@ -30,11 +29,11 @@
 		background-color: white;
 		height: 40px;
 		transition: 0.02s background-color;
+		user-select: none;
 
 		&:hover {
 			background-color: #C95F42;
 		}
-
 	}
 
 </style>
