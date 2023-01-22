@@ -21,7 +21,6 @@
 
 	function mousedown(event) {
 		dragging = true
-		console.log("mousedown")
 		// Skip default behavior to prevent edit cursor in Safari
 		// src: https://stackoverflow.com/a/9743380/1431900
 		event.preventDefault()
@@ -29,7 +28,6 @@
 
 	function mouseup(event) {
 		dragging = false
-		console.log("mouseup")
 	}
 
 	function mouseleave(event) {
@@ -37,26 +35,18 @@
 	}
 
 
-	// MARK: Intersection
+	// MARK: Intersection & child events
 	// These are mouse events we explicitly listen to the child for
 	// to avoid intersection calculations
 
 	function childMouseenter(index) {
 		if (!dragging) { return }
-
-		// if already selected, toggle to unselected
-		// TODO: boolean zen
-		if (intersections.get(index)) {
-			intersections.set(index, false)
-		} else {
-			console.log("set " + index + " to true")
-			console.log(intersections)
-			intersections.set(index, true)
-		}
+		// Toggle
+		const selected = intersections.get(index)
+		intersections.set(index, !selected)
 	}
 
 	function childMousedown(index) {
-		console.log("clicked on " + intersections.get(index))
 		intersections.set(index, !intersections.get(index))
 	}
 

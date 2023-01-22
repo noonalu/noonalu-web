@@ -5,7 +5,7 @@
 	import { ref } from 'vue'
 
 	export interface Props {
-		index: number // index that was selected
+		index: number
 	}
 	const props = defineProps<Props>()
 
@@ -13,7 +13,6 @@
 </script>
 
 <template>
-
 	<!-- Events are for parent ("Day") to listen to -->
 	<div
 		class="increment"
