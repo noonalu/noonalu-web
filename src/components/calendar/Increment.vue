@@ -7,16 +7,20 @@
 	export interface Props {
 		index: number // index that was selected
 	}
-	const selected = ref(false)
+	const props = defineProps<Props>()
 
-	function toggleSelected() {
-		selected.value = !selected.value
-	}
 
 </script>
 
 <template>
-	<div class="increment" @click="toggleSelected" :class="selected && 'active'"></div>
+
+	<!-- Events are for parent ("Day") to listen to -->
+	<div
+		class="increment"
+		@mouseenter="$emit('child-mouseenter', index)"
+		@mousedown="$emit('child-mousedown', index)"
+		@click="$emit('child-click', index)"
+	></div>
 </template>
 
 <style scoped lang="scss">
@@ -28,13 +32,9 @@
 		transition: 0.02s background-color;
 
 		&:hover {
-			background-color: #FC7753;
+			background-color: #C95F42;
 		}
 
-	}
-
-	.active {
-		background-color: rgba(blue, 0.5);
 	}
 
 </style>
