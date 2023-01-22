@@ -12,12 +12,15 @@
 
 	const props = defineProps<Props>()
 	const emit = defineEmits(['intersects'])
+	let dragging = false
 
-	let dragging: boolean = false
-
-	// Using for O(1) even tho vals are not semantically important
-	// (i.e., .exists() would work just as fine)
-	let intersections = reactive(new Map())
+	// Key is index of the Increment that is selected (relative to each day col)
+	// Value is true/false if selected
+	// Map with boolean vals is used for O(1) (.exists() is semantically equivalent)
+	let intersections: Map<number, boolean> = reactive(new Map())
+	for (var i = 0; i < props.timeRangeLength; i++) {
+		intersections.set(i, false)
+	}
 
 	function mousedown(event: Event) {
 		dragging = true
@@ -62,7 +65,7 @@
 	>
     	<h3>{{ dayModel.name }}</h3>
 		<Increment
-			v-for="(n, i) in timeRangeLength"
+			v-for="i in timeRangeLength"
 			:index="i"
 			@child-mouseenter="childMouseenter"
 			@child-mousedown="childMousedown"
