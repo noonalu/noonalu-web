@@ -19,18 +19,18 @@
 	// (i.e., .exists() would work just as fine)
 	let intersections = reactive(new Map())
 
-	function mousedown(event) {
+	function mousedown(event: Event) {
 		dragging = true
 		// Skip default behavior to prevent edit cursor in Safari
 		// src: https://stackoverflow.com/a/9743380/1431900
 		event.preventDefault()
 	}
 
-	function mouseup(event) {
+	function mouseup(event: Event) {
 		dragging = false
 	}
 
-	function mouseleave(event) {
+	function mouseleave(event: Event) {
 		dragging = false
 	}
 
@@ -39,14 +39,14 @@
 	// These are mouse events we explicitly listen to the child for
 	// to avoid intersection calculations
 
-	function childMouseenter(index) {
+	function childMouseenter(index: number) {
 		if (!dragging) { return }
 		// Toggle
 		const selected = intersections.get(index)
 		intersections.set(index, !selected)
 	}
 
-	function childMousedown(index) {
+	function childMousedown(index: number) {
 		intersections.set(index, !intersections.get(index))
 	}
 
