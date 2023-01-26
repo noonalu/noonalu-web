@@ -10,6 +10,17 @@ import Features from './components/features/Features.vue'
 // Models
 import DayModel from './models/DayModel'
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faArrowRight)
+
 // dummy data lol
 
 const day1 = new DayModel('Mon')
@@ -42,5 +53,6 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
 app.mount('#app')
