@@ -6,6 +6,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // Components
 import Calendar from './components/calendar/Calendar.vue'
 import Features from './components/features/Features.vue'
+import CalendarSetup from './components/calendar/CalendarSetup.vue'
 
 // Models
 import DayModel from './models/DayModel'
@@ -33,6 +34,10 @@ const routes = [
 	{
 		path: '/features',
 		component: Features
+	},
+	{
+		path: '/setup',
+		component: CalendarSetup
 	}
 ]
 
