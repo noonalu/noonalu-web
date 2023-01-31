@@ -5,18 +5,20 @@
 	import { ref } from 'vue'
 
 	export interface Props {
-		index: number // index that was selected
+		index: number
 	}
-	const selected = ref(false)
+	const props = defineProps<Props>()
 
-	function toggleSelected() {
-		selected.value = !selected.value
-	}
 
 </script>
 
 <template>
-	<div class="increment" @click="toggleSelected" :class="selected && 'active'"></div>
+	<!-- Events are for parent ("Day") to listen to -->
+	<div
+		class="increment"
+		@mouseenter="$emit('child-mouseenter', index)"
+		@mousedown="$emit('child-mousedown', index)"
+	></div>
 </template>
 
 <style scoped lang="scss">
@@ -26,15 +28,11 @@
 		background-color: white;
 		height: 40px;
 		transition: 0.02s background-color;
+		user-select: none;
 
 		&:hover {
-			background-color: #FC7753;
+			background-color: lighten(#FC7753, 10%);
 		}
-
-	}
-
-	.active {
-		background-color: rgba(blue, 0.5);
 	}
 
 </style>
