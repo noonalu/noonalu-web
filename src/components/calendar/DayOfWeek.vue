@@ -14,7 +14,7 @@
 	const days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
 	let selectedDays: Map<String, boolean> = reactive(new Map())
 
-	function toggle(index: number) {
+	function toggle(index: String) {
 		const selected = selectedDays.get(index)
 		selectedDays.set(index, !selected)
 	}
@@ -25,10 +25,10 @@
 <template>
 
 	<div id="container">
-		<h2>Days of week</h2>
+		<h2><i>Days of week</i></h2>
 		<div id="days">
 			<div class="day"
-			     v-for="(i, day) in days"
+			     v-for="(day, i) in days"
 			     @mousedown="toggle(i)"
 			     :key="day"
 			     :class="{ selected: selectedDays.get(i) }">
@@ -46,39 +46,53 @@
 	p {
 		margin: 0;
 		font-size: 1rem;
-	}
-
-	#container {
-		background-color: #2e2e2e;
-		padding: 30px;
-		border-radius: 7px;
-		margin: 0 auto;
-		height: 160px;
-		width: 400px;
+		font-family: sans-serif; // TODO: move to main styling
 	}
 
 	h2 {
 		color: white;
+		margin: 0;
+		text-align: center;
 	}
+
+	#container {
+		background-color: #2e2e2e;
+		padding: 20px;
+		border-radius: 10px;
+		margin: 0 auto;
+		height: 160px;
+		width: 410px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
 
 	#days {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 
 	.day {
 		background-color: white;
 		padding: 10px;
-		width: 40px;
-		height: 40px;
-		text-align: center;
-		border-radius: 7px;
-		border: 2px solid gray;
-		border-bottom: 4px solid gray;
-		border-right: 3px solid gray;
+		width: 45px;
+		height: 45px;
+		border-radius: 10px;
 
-		transition: all 0.05s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		p {
+			margin-top: 2px;
+		}
+
+		border: 2px solid #7d7d7d;
+		box-shadow: 2px 2px 0 0px #7d7d7d;
+		transition: all 0.1s;
 		user-select: none;
+		cursor: pointer;
 
 		&:hover:not(:active) {
 			background-color: lighten(#FC7753, 10%);
@@ -88,10 +102,8 @@
 	.selected {
 		background-color: #FC7753;
 		color: white;
-		border-bottom: 2px solid gray;
-		border-right: 2px solid gray;
 
-		transform: translateY(1px) translateX(1px);
+		box-shadow: 0 0 0 0;
+		transform: translateY(2px) translateX(2px);
 	}
-
 </style>
