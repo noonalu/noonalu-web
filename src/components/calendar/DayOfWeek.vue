@@ -17,18 +17,23 @@
 
 <template>
 
+	<!-- TODO: Container component -->
 	<div id="container">
-		<h2><i>Days of week</i></h2>
-		<div id="days">
-			<div class="day"
-			     v-for="(day) in days"
-			     @mousedown="toggle(day)"
-			     :key="day"
-			     :class="{ selected: selectedDays.get(day) }">
-			 	<p>
-		 			{{ day }}
-		 		</p>
-		 </div>
+		<div id="header">
+			<h3>Days of the Week</h3>
+		</div>
+		<div id="day-container">
+			<div id="days">
+				<div class="day"
+				     v-for="(day) in days"
+				     @mousedown="toggle(day)"
+				     :key="day"
+				     :class="{ selected: selectedDays.get(day) }">
+				 	<p>
+			 			{{ day }}
+			 		</p>
+			 	</div>
+			</div>
 		</div>
 	</div>
 
@@ -42,24 +47,49 @@
 		font-family: sans-serif; // TODO: move to main styling
 	}
 
-	h2 {
-		color: white;
+	h3 {
+		font-size: 1rem;
 		margin: 0;
 		text-align: center;
+		color: white;
 	}
 
 	#container {
-		background-color: #2e2e2e;
-		padding: 20px;
-		border-radius: 10px;
-		margin: 0 auto;
 		height: 160px;
 		width: 410px;
+		margin: 0 auto;
+		margin-top: 50px; // FIXME: remove for debugging
+	}
+
+	#header {
+		// TODO: Percentages aren't reading parent container width
+		$width: 200px;
+		position: absolute;
+		left: 50%;
+		width: $width;
+		margin-left: -($width / 2);
+		// Half over the top border
+		height: 2rem;
+		margin-top: -1rem;
+		border-radius: 50px; // todo: why 50?
+		background-color: black;
+		// h/v centering text within our height
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
 	}
 
+	// Main "visible" container to the user
+	#day-container {
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+		border: 3px solid $secondary;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
 
 	#days {
 		display: flex;
