@@ -7,6 +7,8 @@
 	const days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
 	let selectedDays: Map<String, boolean> = reactive(new Map())
 
+	// TODO: would be nice to tweak this to
+	// not react on mousedown iff isSelected
 	function toggle(index: String) {
 		const selected = selectedDays.get(index)
 		selectedDays.set(index, !selected)
@@ -44,7 +46,6 @@
 	p {
 		margin: 0;
 		font-size: 1rem;
-		font-family: sans-serif; // TODO: move to main styling
 	}
 
 	h3 {
@@ -55,7 +56,7 @@
 	}
 
 	#container {
-		height: 160px;
+		height: 130px;
 		width: 410px;
 		margin: 0 auto;
 		margin-top: 50px; // FIXME: remove for debugging
@@ -102,15 +103,11 @@
 		width: 45px;
 		height: 45px;
 		border-radius: 10px;
-
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
-		p {
-			margin-top: 2px;
-		}
-
+		// Shadows n' borders
 		border: 2px solid $secondary;
 		box-shadow: 2px 2px 0 0px $secondary;
 		transition: all 0.1s;
@@ -125,7 +122,7 @@
 	.selected {
 		background-color: $primary;
 		color: white;
-
+		font-weight: bold;
 		box-shadow: 0 0 0 0;
 		transform: translateY(2px) translateX(2px);
 	}
