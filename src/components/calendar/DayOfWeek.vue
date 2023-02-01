@@ -2,13 +2,6 @@
 
 	import { reactive } from "vue"
 
-	export interface Props {
-
-	}
-
-	// Initialize props
-	const props = defineProps<Props>()
-
 
 	// Ref amount of days
 	const days = ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
@@ -28,10 +21,10 @@
 		<h2><i>Days of week</i></h2>
 		<div id="days">
 			<div class="day"
-			     v-for="(day, i) in days"
-			     @mousedown="toggle(i)"
+			     v-for="(day) in days"
+			     @mousedown="toggle(day)"
 			     :key="day"
-			     :class="{ selected: selectedDays.get(i) }">
+			     :class="{ selected: selectedDays.get(day) }">
 			 	<p>
 		 			{{ day }}
 		 		</p>
@@ -88,19 +81,19 @@
 			margin-top: 2px;
 		}
 
-		border: 2px solid #7d7d7d;
-		box-shadow: 2px 2px 0 0px #7d7d7d;
+		border: 2px solid $secondary;
+		box-shadow: 2px 2px 0 0px $secondary;
 		transition: all 0.1s;
 		user-select: none;
 		cursor: pointer;
 
 		&:hover:not(:active) {
-			background-color: lighten(#FC7753, 10%);
+			background-color: lighten($primary, 10%);
 		}
 	}
 
 	.selected {
-		background-color: #FC7753;
+		background-color: $primary;
 		color: white;
 
 		box-shadow: 0 0 0 0;
