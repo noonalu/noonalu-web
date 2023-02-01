@@ -59,7 +59,6 @@
 		height: 130px;
 		width: 410px;
 		margin: 0 auto;
-		margin-top: 50px; // FIXME: remove for debugging
 	}
 
 	#header {
