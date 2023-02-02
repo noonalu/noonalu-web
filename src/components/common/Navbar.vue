@@ -6,7 +6,7 @@
 		<img src="../../assets/logo-horizontal.svg"/>
 		<div id="links">
 			<a href="#">calendar</a>
-			<a href="#/features">features</a>
+			<a href="/features">features</a>
 			<a href="#">pricing</a>
 			<a href="#">about</a>
 		</div>
