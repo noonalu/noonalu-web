@@ -7,7 +7,6 @@
 
 	// Initialize props
 	const props = defineProps<Props>()
-	// Keep track if we're in focus or not
 	var inFocus = ref(false);
 
 	function toggleFocus(focus: boolean) {
@@ -17,10 +16,7 @@
 </script>
 
 <template>
-	<div
-		id="container"
-		:class="{ focused: inFocus }"
-	>
+	<div id="container" :class="{ focused: inFocus }" >
 		<label :for="props.name">{{ props.name }}</label>
 		<input
 			type="text"
@@ -28,10 +24,8 @@
 			:placeholder="props.name"
 			@focusin="toggleFocus(true)"
 			@focusout="toggleFocus(false)"
-		>
-		<button
-			@click="$emit('on-click')"
-		>
+		/>
+		<button @click="$emit('on-click')" >
 			<font-awesome-icon icon="fa-solid fa-arrow-right" />
 		</button>
 	</div>
@@ -55,7 +49,7 @@
 		}
 	}
 	.focused {
-		box-shadow: 0 0 0 0 !important;
+		box-shadow: none !important;
  		transform: translateY(2px) translateX(2px);
 	}
 
@@ -77,7 +71,6 @@
 		background-color: #fc7753;
 		display: grid;
 		place-items: center;
-		/* padding: 10px; */
 	}
 
 	label {
