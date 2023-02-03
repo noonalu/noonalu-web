@@ -44,6 +44,8 @@
 
 <style scoped lang="scss">
 
+	$headerHeight: 2rem;
+
 	p {
 		margin: 0;
 		font-size: 1rem;
@@ -60,6 +62,8 @@
 		height: 130px;
 		width: 410px;
 		margin: auto;
+		// Preserve optical spacing
+		margin-top: ($headerHeight / 2);
 	}
 
 	#header {
@@ -70,8 +74,8 @@
 		width: $width;
 		margin-left: -($width / 2);
 		// Half over the top border
-		height: 2rem;
-		margin-top: -1rem;
+		height: $headerHeight;
+		margin-top: -($headerHeight / 2);
 		border-radius: 50px; // todo: why 50?
 		background-color: black;
 		// h/v centering text within our height

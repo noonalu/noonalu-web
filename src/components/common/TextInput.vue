@@ -45,8 +45,8 @@
 		justify-content: space-between;
 		// width: 400px;
 		border-radius: 50px;
-		border: 2px solid #7d7d7d;
-		box-shadow: 3px 3px 0 0px #7d7d7d;
+		border: 2px solid $secondary;
+		box-shadow: 3px 3px 0 0px $secondary;
 		padding: 5px 10px;
 		transition: all 0.1s;
 
