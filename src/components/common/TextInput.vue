@@ -16,28 +16,34 @@
 </script>
 
 <template>
-	<div id="container" :class="{ focused: inFocus }" >
-		<label :for="props.name">{{ props.name }}</label>
-		<input
-			type="text"
-			:name="props.name"
-			:placeholder="props.name"
-			@focusin="toggleFocus(true)"
-			@focusout="toggleFocus(false)"
-		/>
-		<button @click="$emit('on-click')" >
-			<font-awesome-icon icon="fa-solid fa-arrow-right" />
-		</button>
+	<div>
+		<div id="container" :class="{ focused: inFocus }" >
+			<label :for="props.name">{{ props.name }}</label>
+			<input
+				type="text"
+				:name="props.name"
+				:placeholder="props.name"
+				@focusin="toggleFocus(true)"
+				@focusout="toggleFocus(false)"
+			/>
+			<button @click="$emit('on-click')" >
+				<font-awesome-icon icon="fa-solid fa-arrow-right" />
+			</button>
+		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
 
+	div {
+		width: 400px;
+	}
+
 	#container {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		width: 400px;
+		// width: 400px;
 		border-radius: 50px;
 		border: 2px solid #7d7d7d;
 		box-shadow: 3px 3px 0 0px #7d7d7d;

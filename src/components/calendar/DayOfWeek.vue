@@ -19,26 +19,27 @@
 
 <template>
 
-	<!-- TODO: Container component -->
-	<div id="container">
-		<div id="header">
-			<h3>Days of the Week</h3>
-		</div>
-		<div id="day-container">
-			<div id="days">
-				<div class="day"
-				     v-for="(day) in days"
-				     @mousedown="toggle(day)"
-				     :key="day"
-				     :class="{ selected: selectedDays.get(day) }">
-				 	<p>
-			 			{{ day }}
-			 		</p>
-			 	</div>
+	<div>
+		<!-- TODO: Container component -->
+		<div id="container">
+			<div id="header">
+				<h3>Days of the Week</h3>
+			</div>
+			<div id="day-container">
+				<div id="days">
+					<div class="day"
+					     v-for="(day) in days"
+					     @mousedown="toggle(day)"
+					     :key="day"
+					     :class="{ selected: selectedDays.get(day) }">
+					 	<p>
+				 			{{ day }}
+				 		</p>
+				 	</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </template>
 
 <style scoped lang="scss">
@@ -58,7 +59,7 @@
 	#container {
 		height: 130px;
 		width: 410px;
-		margin: 0 auto;
+		margin: auto;
 	}
 
 	#header {
