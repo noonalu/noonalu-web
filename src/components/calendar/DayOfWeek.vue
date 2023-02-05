@@ -21,13 +21,13 @@
 
 	<div>
 		<!-- TODO: Container component -->
-		<div id="container">
-			<div id="header">
+		<div id="dayofweek-container">
+			<div id="dayofweek-header">
 				<h3>Days of the Week</h3>
 			</div>
 			<div id="day-container">
 				<div id="days">
-					<div class="day"
+					<button class="day"
 					     v-for="(day) in days"
 					     @mousedown="toggle(day)"
 					     :key="day"
@@ -35,7 +35,7 @@
 					 	<p>
 				 			{{ day }}
 				 		</p>
-				 	</div>
+				 	</button>
 				</div>
 			</div>
 		</div>
@@ -51,14 +51,8 @@
 		font-size: 1rem;
 	}
 
-	h3 {
-		font-size: 1rem;
-		margin: 0;
-		text-align: center;
-		color: white;
-	}
 
-	#container {
+	#dayofweek-container {
 		height: 130px;
 		width: 410px;
 		margin: auto;
@@ -66,7 +60,7 @@
 		margin-top: ($headerHeight / 2);
 	}
 
-	#header {
+	#dayofweek-header {
 		// TODO: Percentages aren't reading parent container width
 		$width: 200px;
 		position: absolute;
@@ -82,6 +76,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
+
+		h3 {
+			font-size: 1rem;
+			margin: 0;
+			text-align: center;
+			color: white;
+		}
 	}
 
 	// Main "visible" container to the user
