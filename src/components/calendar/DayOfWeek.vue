@@ -45,6 +45,7 @@
 <style scoped lang="scss">
 
 	$headerHeight: 2rem;
+	$headerWidth: 200px;
 
 	p {
 		margin: 0;
@@ -61,28 +62,7 @@
 	}
 
 	#dayofweek-header {
-		// TODO: Percentages aren't reading parent container width
-		$width: 200px;
-		position: absolute;
-		left: 50%;
-		width: $width;
-		margin-left: -($width / 2);
-		// Half over the top border
-		height: $headerHeight;
-		margin-top: -($headerHeight / 2);
-		border-radius: 50px; // todo: why 50?
-		background-color: black;
-		// h/v centering text within our height
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-
-		h3 {
-			font-size: 1rem;
-			margin: 0;
-			text-align: center;
-			color: white;
-		}
+		@include container-header($headerWidth, $headerHeight);
 	}
 
 	// Main "visible" container to the user
@@ -90,7 +70,7 @@
 		width: 100%;
 		height: 100%;
 		padding: 20px;
-		border: 3px solid $secondary;
+		border: 2px solid $secondary;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;

@@ -42,6 +42,7 @@
 <style scoped lang="scss">
 
 	$headerHeight: 2rem;
+	$headerWidth: 200px;
 
 	#textinput-container {
 		width: 410px;
@@ -65,35 +66,21 @@
 	}
 
 	#textinput-header {
-		// TODO: Percentages aren't reading parent container width
-		$width: 200px;
-		position: absolute;
-		left: 50%;
-		width: $width;
-		margin-left: -($width / 2);
-		// Half over the top border
-		height: $headerHeight;
-		margin-top: -($headerHeight / 2);
-		border-radius: 50px; // todo: why 50?
-		background-color: black;
-		// h/v centering text within our height
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		z-index: 2;
+		@include container-header($headerWidth, $headerHeight);
 	}
 
 	#text-container {
+		@include container-header-body;
+		@include container-style;
+
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		// Needed as size calc changes when button is hidden vs. shown
 		min-height: 3.5rem;
 		border-radius: 50px;
-		border: 2px solid $secondary;
 		box-shadow: 3px 3px 0 0px $secondary;
 		padding: 5px 20px;
-		z-index: 1;
 
 		button {
 			border: 2px solid white;
@@ -106,12 +93,12 @@
 	}
 
 	input {
+		@include body-font-size;
 		height: 100%;
 		width: 100%;
 		margin-right: 20px;
-		border: 0px solid #333;
-		outline: 0px solid;
-		font-size: 20px;
+		border: none;
+		outline: none;
 	}
 
 	button {
@@ -119,7 +106,7 @@
 		width: 2.5rem;
 		height: 2.5rem;
 		border-radius: 50%;
-		background-color: #fc7753;
+		background-color: $primary;
 		display: grid;
 		place-items: center;
 	}
