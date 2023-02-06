@@ -72,6 +72,7 @@
 	#text-container {
 		@include container-header-body;
 		@include container-style;
+		@include hard-shadow;
 
 		display: flex;
 		align-items: center;
@@ -79,7 +80,6 @@
 		// Needed as size calc changes when button is hidden vs. shown
 		min-height: 3.5rem;
 		border-radius: 50px;
-		box-shadow: 3px 3px 0 0px $secondary;
 		padding: 5px 20px;
 
 		button {
@@ -93,7 +93,7 @@
 	}
 
 	input {
-		@include body-font-size;
+		font-size: 1rem;
 		height: 100%;
 		width: 100%;
 		margin-right: 20px;

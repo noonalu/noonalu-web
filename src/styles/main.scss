@@ -2,10 +2,7 @@
 // MARK: Fonts
 
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
-
-$titleFont: 'Valera Round', sans-serif;
-$bodyFont: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0, 500;0,700;1,400&display=swap');
 
 
 // MARK: Global styles
@@ -28,7 +25,8 @@ $secondary: #333333;
 
 // MARK: Typography
 
-$body-font-size: 1.5rem;
+$titleFont: 'Valera Round', sans-serif;
+$bodyFont: 'Roboto', sans-serif;
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: $titleFont;
@@ -40,15 +38,15 @@ h1 {
 
 p {
 	font-family: $bodyFont;
-	font-size: body-font-size;
+	font-size: 1.5rem;
 }
 
 
 // MARK: Mixins
 
-// Convenience for <input>, <label>, etc.
-@mixin body-font-size {
-
+// The shadow holding this app together
+@mixin hard-shadow($size: 3px) {
+	box-shadow: $size $size 0 0 $secondary;
 }
 
 // Standard style for containers
@@ -75,6 +73,8 @@ p {
 	z-index: 2;
 
 	h3 {
+		font-family: $bodyFont;
+		font-weight: 500; // "Medium"
 		font-size: 1rem;
 		margin: 0;
 		text-align: center;

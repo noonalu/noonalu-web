@@ -67,6 +67,7 @@
 
 	// Main "visible" container to the user
 	#day-container {
+		@include hard-shadow;
 		width: 100%;
 		height: 100%;
 		padding: 20px;
@@ -83,6 +84,7 @@
 	}
 
 	.day {
+		@include hard-shadow(2px);
 		background-color: white;
 		padding: 10px;
 		width: 45px;
@@ -94,7 +96,6 @@
 
 		// Shadows n' borders
 		border: 2px solid $secondary;
-		box-shadow: 2px 2px 0 0px $secondary;
 		transition: all 0.1s;
 		user-select: none;
 		cursor: pointer;
