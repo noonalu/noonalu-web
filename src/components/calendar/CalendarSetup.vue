@@ -34,7 +34,6 @@
 		height: 50px;
 		background-color: $primary;
 		border-radius: 7px;
-
 	}
 
 </style>
