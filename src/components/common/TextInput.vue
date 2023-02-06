@@ -46,10 +46,9 @@
 
 	#textinput-container {
 		width: 410px;
-		// border: 3px solid blue;
 		margin: auto;
 		// Preserve optical spacing
-		margin-top: ($headerHeight / 2);
+		margin-top: calc($headerHeight / 2);
 
 		h3 {
 			font-size: 1rem;

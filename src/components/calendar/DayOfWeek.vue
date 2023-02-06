@@ -58,7 +58,7 @@
 		width: 410px;
 		margin: auto;
 		// Preserve optical spacing
-		margin-top: ($headerHeight / 2);
+		margin-top: calc($headerHeight / 2);
 	}
 
 	#dayofweek-header {
