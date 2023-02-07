@@ -68,10 +68,10 @@
 	// Main "visible" container to the user
 	#day-container {
 		@include hard-shadow;
+		@include container-style;
 		width: 100%;
 		height: 100%;
 		padding: 20px;
-		border: 2px solid $secondary;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;

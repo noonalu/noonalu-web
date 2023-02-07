@@ -72,7 +72,6 @@
 		@include container-header-body;
 		@include container-style;
 		@include hard-shadow;
-
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -88,14 +87,13 @@
 
 	.focused {
 		box-shadow: none !important;
- 		transform: translateY(2px) translateX(2px);
+		transform: translateY(2px) translateX(2px);
 	}
 
 	input {
 		font-size: 1rem;
-		height: 100%;
 		width: 100%;
-		margin-right: 20px;
+		margin-right: 20px; // Space for button
 		border: none;
 		outline: none;
 	}
