@@ -3,6 +3,7 @@
 	import Navbar from "../common/Navbar.vue"
 	import TextInput from "../common/TextInput.vue"
 	import DayOfWeek from "./DayOfWeek.vue"
+	import PrimaryButton from "../common/PrimaryButton.vue"
 
 </script>
 
@@ -14,7 +15,7 @@
 
 		<TextInput :name="'Name'"/>
 		<DayOfWeek />
-		<!-- TODO: [NLU-36] Button -->
+		<PrimaryButton text="Submit" />
 		<!-- TODO: [NLU-33] Time range component -->
 	</div>
 
