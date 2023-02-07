@@ -41,8 +41,8 @@ nav {
 
 			&:hover {
 				transform: translateY(-3px);
-				color: #FC7753;
-				border-bottom: 3px solid #FC7753;
+				color: $primary;
+				border-bottom: 3px solid $primary;
 			}
 		}
 	}

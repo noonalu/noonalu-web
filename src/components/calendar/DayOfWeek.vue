@@ -19,72 +19,59 @@
 
 <template>
 
-	<!-- TODO: Container component -->
-	<div id="container">
-		<div id="header">
-			<h3>Days of the Week</h3>
-		</div>
-		<div id="day-container">
-			<div id="days">
-				<div class="day"
-				     v-for="(day) in days"
-				     @mousedown="toggle(day)"
-				     :key="day"
-				     :class="{ selected: selectedDays.get(day) }">
-				 	<p>
-			 			{{ day }}
-			 		</p>
-			 	</div>
+	<div>
+		<!-- TODO: Container component -->
+		<div id="dayofweek-container">
+			<div id="dayofweek-header">
+				<h3>Days of the Week</h3>
+			</div>
+			<div id="day-container">
+				<div id="days">
+					<button class="day"
+					     v-for="(day) in days"
+					     @mousedown="toggle(day)"
+					     :key="day"
+					     :class="{ selected: selectedDays.get(day) }">
+					 	<p>
+				 			{{ day }}
+				 		</p>
+				 	</button>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </template>
 
 <style scoped lang="scss">
+
+	$headerHeight: 2rem;
+	$headerWidth: 200px;
 
 	p {
 		margin: 0;
 		font-size: 1rem;
 	}
 
-	h3 {
-		font-size: 1rem;
-		margin: 0;
-		text-align: center;
-		color: white;
-	}
 
-	#container {
+	#dayofweek-container {
 		height: 130px;
 		width: 410px;
-		margin: 0 auto;
+		margin: auto;
+		// Preserve optical spacing
+		margin-top: calc($headerHeight / 2);
 	}
 
-	#header {
-		// TODO: Percentages aren't reading parent container width
-		$width: 200px;
-		position: absolute;
-		left: 50%;
-		width: $width;
-		margin-left: -($width / 2);
-		// Half over the top border
-		height: 2rem;
-		margin-top: -1rem;
-		border-radius: 50px; // todo: why 50?
-		background-color: black;
-		// h/v centering text within our height
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
+	#dayofweek-header {
+		@include container-header($headerWidth, $headerHeight);
 	}
 
 	// Main "visible" container to the user
 	#day-container {
+		@include hard-shadow;
+		@include container-style;
 		width: 100%;
 		height: 100%;
 		padding: 20px;
-		border: 3px solid $secondary;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
@@ -97,6 +84,7 @@
 	}
 
 	.day {
+		@include hard-shadow(2px);
 		background-color: white;
 		padding: 10px;
 		width: 45px;
@@ -108,7 +96,6 @@
 
 		// Shadows n' borders
 		border: 2px solid $secondary;
-		box-shadow: 2px 2px 0 0px $secondary;
 		transition: all 0.1s;
 		user-select: none;
 		cursor: pointer;

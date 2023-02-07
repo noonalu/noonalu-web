@@ -5,7 +5,6 @@
 	import { computed } from 'vue'
 	import Navbar from "../common/Navbar.vue"
 	import Footer from "../common/Footer.vue"
-	import TextInput from "../common/TextInput.vue"
 
 	export interface Props {
 		// Non contiguous set of days
@@ -77,7 +76,6 @@
 
 <template>
 	<Navbar />
-	<TextInput :name="'Name'"/>
 
 	<div id="calContainer">
 		<div id="calendar">

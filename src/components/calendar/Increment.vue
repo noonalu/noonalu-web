@@ -31,7 +31,7 @@
 		user-select: none;
 
 		&:hover {
-			background-color: lighten(#FC7753, 10%);
+			background-color: lighten($primary, 10%);
 		}
 	}
 
