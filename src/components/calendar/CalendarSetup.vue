@@ -9,10 +9,10 @@
 
 <template>
 
-	<Navbar />
+	<Navbar :withLogo="false" />
 
-	<div id="container">
-
+	<div id="setup-container">
+		<img id="hero-logo" src="../../assets/logo-horizontal.svg"/>
 		<TextInput :name="'Name'"/>
 		<DayOfWeek />
 		<PrimaryButton text="Submit" />
@@ -23,9 +23,14 @@
 
 <style scoped lang="scss">
 
-	#container {
+	#hero-logo {
+		height: 7.5rem;
+		margin: 0 auto;
+	}
+
+	#setup-container {
 		display: grid;
-		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-rows: 1.5fr 1fr 1fr 1fr;
 		justify-items: center;
 		align-items: center;
 	}

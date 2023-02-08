@@ -4,7 +4,6 @@
 		text: string
 	}
 
-	// Initialize props
 	const props = defineProps<Props>()
 </script>
 

@@ -16,7 +16,6 @@
 		endTime: Date
 	}
 
-	// Initialize props
 	const props = defineProps<Props>()
 
 	function isMorning(hour: number): boolean {
