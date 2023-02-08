@@ -94,7 +94,7 @@
 
 	#calContainer {
 		margin: 0 auto;
-		width: 80%;
+		width: min(750px, 80%)
 	}
 
 	#calendar {
@@ -118,7 +118,8 @@
 		}
 
 		display: grid;
-		grid-template-columns: 10% repeat(v-bind('dayRangeLength'), 14%);
+		$legend-width: 10%;
+		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
 		justify-content: center;
 
 		#legend {
