@@ -6,7 +6,6 @@
 		withButton?: boolean
 	}
 
-	// Initialize props
 	const props = withDefaults(defineProps<Props>(), {
 		withButton: false
 	})
@@ -47,8 +46,6 @@
 	#textinput-container {
 		width: 410px;
 		margin: auto;
-		// Preserve optical spacing
-		margin-top: calc($headerHeight / 2);
 
 		h3 {
 			font-size: 1rem;

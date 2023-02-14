@@ -1,21 +1,36 @@
 <script setup lang="ts">
+
+	export interface Props {
+		withLogo?: boolean
+	}
+
+	const props = withDefaults(defineProps<Props>(), {
+		withLogo: true
+	})
+
+	// Can't seem to do class binding with a prop, so here we are
+	function isWithLogo(): boolean {
+		return props.withLogo
+	}
+
 </script>
 
 <template>
-	<nav>
-		<img src="../../assets/logo-horizontal.svg"/>
+	<nav :class="{ withoutLogoDesc: !isWithLogo() }">
+		<img src="../../assets/logo-horizontal.svg" v-show="withLogo"/>
 		<div id="links">
-			<a href="#">calendar</a>
-			<a href="#/features">features</a>
-			<a href="#">pricing</a>
 			<a href="#">about</a>
 		</div>
 	</nav>
 </template>
 
 <style scoped lang="scss">
-nav {
-		display: inline-block;
+
+	.withoutLogoDesc {
+		justify-content: end;
+	}
+
+	nav {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
