@@ -94,7 +94,7 @@
 
 	#calContainer {
 		margin: 0 auto;
-		width: min(750px, 80%)
+		width: min(750px, 80%);
 	}
 
 	#calendar {
