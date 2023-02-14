@@ -33,21 +33,20 @@ const dayModels: DayModel[] = [day1, day2, day3, day4]
 const routes = [
 	{
 		path: '/',
-		component: Calendar,
-		props: {
-			dayModels: dayModels,
-			startTime: new Date(0, 0, 0, 9),
-			endTime: new Date(0, 0, 0, 15),
-
-		}
+		component: CalendarSetup,
 	},
 	{
 		path: '/features',
 		component: Features
 	},
 	{
-		path: '/setup',
-		component: CalendarSetup
+		path: '/calendar',
+		component: Calendar,
+		props: {
+			dayModels: dayModels,
+			startTime: new Date(0, 0, 0, 9),
+			endTime: new Date(0, 0, 0, 15),
+		}
 	}
 ]
 
