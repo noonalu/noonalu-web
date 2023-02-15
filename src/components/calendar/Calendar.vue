@@ -94,7 +94,7 @@
 			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
 		</div>
 	</div>
-	<Footer />
+	<!-- <Footer /> -->
 </template>
 
 <style scoped lang="scss">
@@ -120,25 +120,29 @@
 		// as if its the first column.
 		// The first actual column is the legend.
 		&>div {
-			background-color: rgba(black, 0.2);
-			padding-right: 5px;
 
 			// Border radius only on edges of first & last "real" col
 			// (I can't believe this works...)
 			&:nth-child(2) {
-				border-radius: 8px 0 0 8px;
-				padding-left: 5px;
+				// needs to know it's the "second" col
+				// (first in list of days)
+				&::v-deep .incrementContainer {
+					border-radius: 8px 0 0 8px;
+					padding-left: 20px;
+				}
 			}
 
 			&:last-child {
-				border-radius: 0 8px 8px 0;
+				&::v-deep .incrementContainer {
+					border-radius: 0 8px 8px 0;
+					padding-right: 20px;
+				}
 			}
 		}
 
 		#legend {
 			display: grid;
 			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
-			row-gap: 5px;
 			background-color: white;
 
 			p {
@@ -147,7 +151,7 @@
 				margin: 0;
 				// TODO: halfway thru first day height, eyeballing for now
 				padding-top: 12px;
-				background-color: $primary;
+				// background-color: $primary;
 				padding-right: 20px;
 				text-align: right;
 

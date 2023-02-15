@@ -64,13 +64,17 @@
 		@mouseleave="mouseleave"
 	>
     	<h3>{{ dayModel.name }}</h3>
-		<Increment
-			v-for="i in timeRangeLength"
-			:index="i"
-			@child-mouseenter="childMouseenter"
-			@child-mousedown="childMousedown"
-			:class="{ selectedElement: intersections.get(i) }"
-		/>
+    	<div class="incrementContainer">
+			<Increment
+				v-for="i in timeRangeLength"
+				:index="i"
+				:key="i"
+				@child-mouseenter="childMouseenter"
+				@child-mousedown="childMousedown"
+				class="increment"
+				:class="{ selectedElement: intersections.get(i) }"
+			/>
+		</div>
 	</div>
 </template>
 
@@ -78,8 +82,15 @@
 
 	.day {
 		display: grid;
-		row-gap: 5px;
 		user-select: none;
+	}
+
+	.incrementContainer {
+		$pad: 20px;
+		background-color: rgba(black, 0.2);
+		padding: $pad 0;
+		display: grid;
+		row-gap: 5px;
 	}
 
 	// The selected "day" element
@@ -93,6 +104,7 @@
 		text-align: center;
 		height: 40px;
 		margin: 0;
+		background-color: white;
 	}
 
 </style>
