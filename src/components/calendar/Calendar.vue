@@ -93,10 +93,15 @@
 
 	#calContainer {
 		margin: 0 auto;
-		width: 80%;
+		width: min(750px, 80%);
 	}
 
 	#calendar {
+		$legend-width: 10%;
+		// Each column width is the total window width minus the legend-width divided by the number of days
+		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
+		display: grid;
+		justify-content: center;
 
 		// HACK: Style background for the calendar
 		// Since we can't style around row gaps,
@@ -115,10 +120,6 @@
 				border-radius: 0 8px 8px 0;
 			}
 		}
-
-		display: grid;
-		grid-template-columns: 10% repeat(v-bind('dayRangeLength'), 14%);
-		justify-content: center;
 
 		#legend {
 			display: grid;
