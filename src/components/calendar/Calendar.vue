@@ -27,7 +27,7 @@
 	}
 
 	// TODO: Make computed, didn't do it because <vague compiler complaints>
-	function timeRange(): number[] {
+	function timeRangeDisplay(): string[] {
 		// Create a range of hours that can be returned
 		// For instance, if our prop is
 		//		startTime: 9am
@@ -35,24 +35,32 @@
 		// This method would return
 		//		[9, 10, 11, 12, 1, 2, 3, 4]
 
-		let hours: number[] = []
+		let hours: string[] = []
 
 		const startHour = props.startTime.getHours()
 		const endHour = props.endTime.getHours()
 
+		// Crosses over
 		if (isMorning(startHour) && isAfternoon(endHour)) {
 			for (var i = startHour; i <= 12; i++) {
-				hours.push(i)
+				hours.push(i + "am")
 			}
 			// Start at "1" that gets converted
 			for (var i = 13; i <= endHour; i++) {
-				hours.push(i - 12)
+				hours.push((i - 12) + "pm")
 			}
+
+		// All morning or all afternoon
 		} else {
-			hours.push(-1)
+			hours.push(-1 + "??")
 			// Loop directly
 			for (var i = startHour; i <= endHour; i++) {
-				hours.push(i)
+
+				if (isMorning(i)) {
+					hours.push(i + "am")
+				} else {
+					hours.push(i + "pm")
+				}
 			}
 		}
 
@@ -63,7 +71,7 @@
 	// Used for ranges of the calendar page
 
 	const timeRangeLength = computed<number>(() => {
-		return timeRange().length * 2
+		return timeRangeDisplay().length * 2
 	})
 
 	const dayRangeLength = computed<number>(() => {
@@ -81,7 +89,7 @@
 			<div id="legend">
 				<!-- Dummy first node to leave space for header -->
 				<p></p>
-				<p v-for="(hour, i) in timeRange()">{{ hour }}</p>
+				<p v-for="(hour, i) in timeRangeDisplay()">{{ hour }}</p>
 			</div>
 			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
 		</div>
