@@ -101,6 +101,7 @@
 
 	#calContainer {
 		margin: 0 auto;
+		margin-top: 50px;
 		width: min(750px, 80%);
 	}
 
@@ -114,14 +115,19 @@
 		// HACK: Style background for the calendar
 		// Since we can't style around row gaps,
 		// we need to do some manual... adjustments.
+		//
+		// Key iea: style the second col, first day of week,
+		// as if its the first column.
+		// The first actual column is the legend.
 		&>div {
 			background-color: rgba(black, 0.2);
-			padding: 10px;
+			padding-right: 5px;
 
 			// Border radius only on edges of first & last "real" col
 			// (I can't believe this works...)
 			&:nth-child(2) {
 				border-radius: 8px 0 0 8px;
+				padding-left: 5px;
 			}
 
 			&:last-child {
@@ -135,14 +141,15 @@
 			row-gap: 5px;
 			background-color: white;
 
-			// Day cols
 			p {
 				grid-row: span 2;
 				font-size: 1.1rem;
 				margin: 0;
+				// TODO: halfway thru first day height, eyeballing for now
+				padding-top: 12px;
+				background-color: $primary;
 				padding-right: 20px;
 				text-align: right;
-				border-top: 1px solid black;
 
 				// Hidden empty first cell
 				// to match day of week name
