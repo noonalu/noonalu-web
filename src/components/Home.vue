@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Eyes from './Eyes.vue';
+import GooglyLogoFull from './GooglyLogoFull.vue';
 </script>
 
 <template>
@@ -15,13 +15,12 @@ import Eyes from './Eyes.vue';
 			</nav>
 
 			<div id="header">
-				<img src="../assets/logo-full-2.svg"/>
+				<GooglyLogoFull/>
 				<div>
 					<p><i>Schedule things, probably.</i></p>
 				</div>
 			</div>
 			<div id="header">
-			<Eyes />
 			</div>
 			<p id="float-tagline">We make time for everyone.<br /><sub>(we pwomise 👉👈)</sub></p>
 
