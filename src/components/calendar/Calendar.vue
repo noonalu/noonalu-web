@@ -112,6 +112,8 @@
 		display: grid;
 		justify-content: center;
 
+		$outerPad: 12px;
+
 		// HACK: Style background for the calendar
 		// Since we can't style around row gaps,
 		// we need to do some manual... adjustments.
@@ -121,37 +123,47 @@
 		// The first actual column is the legend.
 		&>div {
 
-			// Border radius only on edges of first & last "real" col
-			// (I can't believe this works...)
+			&::v-deep .incrementContainer {
+				padding: $outerPad 0;
+			}
+
+			// First day col
 			&:nth-child(2) {
 				// needs to know it's the "second" col
 				// (first in list of days)
 				&::v-deep .incrementContainer {
 					border-radius: 8px 0 0 8px;
-					padding-left: 20px;
+					padding-left: $outerPad;
 				}
 			}
 
+			// Add spacing to inner elements
+			&:not(&:last-child) {
+				&::v-deep .incrementContainer {
+					padding-right: 5px;
+				}
+			}
+
+			// Last day col
 			&:last-child {
 				&::v-deep .incrementContainer {
 					border-radius: 0 8px 8px 0;
-					padding-right: 20px;
+					padding-right: $outerPad;
 				}
 			}
 		}
 
 		#legend {
 			display: grid;
+			row-gap: 5px;
 			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
 			background-color: white;
+			user-select: none;
 
 			p {
+				// background-color: $primary;
 				grid-row: span 2;
 				font-size: 1.1rem;
-				margin: 0;
-				// TODO: halfway thru first day height, eyeballing for now
-				padding-top: 12px;
-				// background-color: $primary;
 				padding-right: 20px;
 				text-align: right;
 

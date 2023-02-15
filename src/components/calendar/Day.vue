@@ -81,16 +81,23 @@
 <style scoped lang="scss">
 
 	.day {
-		display: grid;
 		user-select: none;
+
+		h3 {
+			font-size: 1.4rem;
+			text-align: center;
+			height: 40px;
+			margin: 0;
+			padding-top: 5px; // Bump a bit closer
+			font-weight: normal;
+			background-color: white;
+		}
 	}
 
 	.incrementContainer {
-		$pad: 20px;
-		background-color: rgba(black, 0.2);
-		padding: $pad 0;
 		display: grid;
 		row-gap: 5px;
+		background-color: rgba(black, 0.2);
 	}
 
 	// The selected "day" element
@@ -100,11 +107,5 @@
 		color: black;
 	}
 
-	h3 {
-		text-align: center;
-		height: 40px;
-		margin: 0;
-		background-color: white;
-	}
 
 </style>
