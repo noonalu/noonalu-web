@@ -99,6 +99,11 @@
 
 	#calendar {
 
+		$legend-width: 10%;
+
+		// Each column width is the total window width minus the legend-width divided by the number of days
+		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
+
 		// HACK: Style background for the calendar
 		// Since we can't style around row gaps,
 		// we need to do some manual... adjustments.
@@ -118,8 +123,6 @@
 		}
 
 		display: grid;
-		$legend-width: 10%;
-		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
 		justify-content: center;
 
 		#legend {
