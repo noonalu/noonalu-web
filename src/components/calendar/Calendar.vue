@@ -107,7 +107,7 @@
 	}
 
 	#calendar {
-		$outerPad: 12px;
+		$outerPad: 15px;
 		$innerPad: $outerPad / 2;
 
 		$legend-width: 10%;
@@ -118,7 +118,7 @@
 
 		// $innerPad is provided later
 		// to maintain consistent col width.
-		$bgColWidth: calc($outerPad - $innerPad);
+		$bgColWidth: calc($outerPad - calc($innerPad / 2));
 
 		// Note: two cols exclusively for background-color
 		grid-template-columns: $legend-width $bgColWidth repeat($dayRange, $dayWidth) $bgColWidth;
@@ -145,31 +145,9 @@
 			border-radius: 0 8px 8px 0;
 		}
 
-		&>div {
-
-			&::v-deep .incrementContainer {
-				// Account for doubling in inner cols
-				padding: $outerPad ($innerPad / 2);
-			}
-
-			// The following two padding adjustments
-			// help keep all cols the same width,
-			// as padding will shrink them.
-
-			// First day col
-			&:nth-child(3) {
-				// This is here b/c it needs to know it's the "second" col
-				&::v-deep .incrementContainer {
-					padding-left: $innerPad;
-				}
-			}
-
-			// Last day col
-			&:nth-last-child(2) {
-				&::v-deep .incrementContainer {
-					padding-right: $innerPad;
-				}
-			}
+		// Account for doubling in inner cols
+		&::v-deep .incrementContainer {
+			padding: $outerPad ($innerPad / 2);
 		}
 
 		#legend {
