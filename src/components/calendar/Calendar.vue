@@ -27,7 +27,7 @@
 	}
 
 	// TODO: Make computed, didn't do it because <vague compiler complaints>
-	function timeRange(): number[] {
+	function timeRangeDisplay(): string[] {
 		// Create a range of hours that can be returned
 		// For instance, if our prop is
 		//		startTime: 9am
@@ -35,24 +35,31 @@
 		// This method would return
 		//		[9, 10, 11, 12, 1, 2, 3, 4]
 
-		let hours: number[] = []
+		let hours: string[] = []
 
 		const startHour = props.startTime.getHours()
 		const endHour = props.endTime.getHours()
 
+		// Crosses over
 		if (isMorning(startHour) && isAfternoon(endHour)) {
 			for (var i = startHour; i <= 12; i++) {
-				hours.push(i)
+				hours.push(i + "am")
 			}
 			// Start at "1" that gets converted
 			for (var i = 13; i <= endHour; i++) {
-				hours.push(i - 12)
+				hours.push((i - 12) + "pm")
 			}
+
+		// All morning or all afternoon
 		} else {
-			hours.push(-1)
 			// Loop directly
 			for (var i = startHour; i <= endHour; i++) {
-				hours.push(i)
+
+				if (isMorning(i)) {
+					hours.push(i + "am")
+				} else {
+					hours.push(i + "pm")
+				}
 			}
 		}
 
@@ -63,11 +70,10 @@
 	// Used for ranges of the calendar page
 
 	const timeRangeLength = computed<number>(() => {
-		return timeRange().length * 2
+		return timeRangeDisplay().length * 2
 	})
 
 	const dayRangeLength = computed<number>(() => {
-	// function timeRangeLength(): number {
 		return props.dayModels.length
 	})
 
@@ -81,9 +87,11 @@
 			<div id="legend">
 				<!-- Dummy first node to leave space for header -->
 				<p></p>
-				<p v-for="(hour, i) in timeRange()">{{ hour }}</p>
+				<p v-for="(hour, i) in timeRangeDisplay()" :key="i">{{ hour }}</p>
 			</div>
-			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
+			<div id="leftBgCol"></div>
+			<Day v-for="(day, i) in dayModels" :key="i" :dayModel="day" :timeRangeLength="timeRangeLength" />
+			<div id="rightBgCol"></div>
 		</div>
 	</div>
 	<Footer />
@@ -93,48 +101,67 @@
 
 	#calContainer {
 		margin: 0 auto;
+		margin-top: 50px;
 		width: min(750px, 80%);
 	}
 
 	#calendar {
+		$outerPad: 15px;
+		$innerPad: $outerPad / 2;
+
 		$legend-width: 10%;
+
 		// Each column width is the total window width minus the legend-width divided by the number of days
-		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
+		$dayRange: v-bind('dayRangeLength');
+		$dayWidth: calc((100% - $legend-width) / $dayRange);
+
+		// $innerPad is provided later
+		// to maintain consistent col width.
+		$bgColWidth: calc($outerPad - calc($innerPad / 2));
+
+		// Note: two cols exclusively for background-color
+		grid-template-columns: $legend-width $bgColWidth repeat($dayRange, $dayWidth) $bgColWidth;
 		display: grid;
 		justify-content: center;
 
 		// HACK: Style background for the calendar
-		// Since we can't style around row gaps,
-		// we need to do some manual... adjustments.
-		&>div {
+		// (Since we can't style under `column-gap`)
+		//
+		// Key iea: style the second col, first day of week,
+		// as if its the first column.
+		// The first actual column is the legend.
+
+		#leftBgCol, #rightBgCol {
 			background-color: rgba(black, 0.2);
-			padding: 10px;
+			margin-top: 40px;
+		}
 
-			// Border radius only on edges of first & last "real" col
-			// (I can't believe this works...)
-			&:nth-child(2) {
-				border-radius: 8px 0 0 8px;
-			}
+		#leftBgCol {
+			border-radius: 8px 0 0 8px;
+		}
 
-			&:last-child {
-				border-radius: 0 8px 8px 0;
-			}
+		#rightBgCol {
+			border-radius: 0 8px 8px 0;
+		}
+
+		// Account for doubling in inner cols
+		&::v-deep .incrementContainer {
+			padding: $outerPad ($innerPad / 2);
 		}
 
 		#legend {
 			display: grid;
-			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
 			row-gap: 5px;
+			grid-template-rows: repeat(v-bind('timeRangeLength'), 40px);
 			background-color: white;
+			user-select: none;
 
-			// Day cols
 			p {
+				// background-color: $primary;
 				grid-row: span 2;
 				font-size: 1.1rem;
-				margin: 0;
-				padding-right: 20px;
+				margin-right: 15px;
 				text-align: right;
-				border-top: 1px solid black;
 
 				// Hidden empty first cell
 				// to match day of week name
