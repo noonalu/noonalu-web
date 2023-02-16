@@ -52,7 +52,6 @@
 
 		// All morning or all afternoon
 		} else {
-			hours.push(-1 + "??")
 			// Loop directly
 			for (var i = startHour; i <= endHour; i++) {
 
