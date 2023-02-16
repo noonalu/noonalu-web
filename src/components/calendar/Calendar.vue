@@ -75,7 +75,6 @@
 	})
 
 	const dayRangeLength = computed<number>(() => {
-	// function timeRangeLength(): number {
 		return props.dayModels.length
 	})
 
@@ -89,9 +88,11 @@
 			<div id="legend">
 				<!-- Dummy first node to leave space for header -->
 				<p></p>
-				<p v-for="(hour, i) in timeRangeDisplay()">{{ hour }}</p>
+				<p v-for="(hour, i) in timeRangeDisplay()" :key="i">{{ hour }}</p>
 			</div>
-			<Day v-for="(day, i) in dayModels" :dayModel="day" :timeRangeLength="timeRangeLength" />
+			<div id="leftBgCol"></div>
+			<Day v-for="(day, i) in dayModels" :key="i" :dayModel="day" :timeRangeLength="timeRangeLength" />
+			<div id="rightBgCol"></div>
 		</div>
 	</div>
 	<!-- <Footer /> -->
@@ -106,49 +107,67 @@
 	}
 
 	#calendar {
+		$outerPad: 12px;
+		$innerPad: $outerPad / 2;
+
 		$legend-width: 10%;
+
 		// Each column width is the total window width minus the legend-width divided by the number of days
-		grid-template-columns: $legend-width repeat(v-bind('dayRangeLength'), calc((100% - $legend-width) / v-bind('dayRangeLength')));
+		$dayRange: v-bind('dayRangeLength');
+		$dayWidth: calc((100% - $legend-width) / $dayRange);
+
+		// $innerPad is provided later
+		// to maintain consistent col width.
+		$bgColWidth: calc($outerPad - $innerPad);
+
+		// Note: two cols exclusively for background-color
+		grid-template-columns: $legend-width $bgColWidth repeat($dayRange, $dayWidth) $bgColWidth;
 		display: grid;
 		justify-content: center;
 
-		$outerPad: 12px;
-
 		// HACK: Style background for the calendar
-		// Since we can't style around row gaps,
-		// we need to do some manual... adjustments.
+		// (Since we can't style under `column-gap`)
 		//
 		// Key iea: style the second col, first day of week,
 		// as if its the first column.
 		// The first actual column is the legend.
+
+		#leftBgCol, #rightBgCol {
+			background-color: rgba(black, 0.2);
+			margin-top: 40px;
+		}
+
+		#leftBgCol {
+			border-radius: 8px 0 0 8px;
+		}
+
+		#rightBgCol {
+			border-radius: 0 8px 8px 0;
+		}
+
 		&>div {
 
 			&::v-deep .incrementContainer {
-				padding: $outerPad 0;
+				// Account for doubling in inner cols
+				padding: $outerPad ($innerPad / 2);
 			}
+
+			// The following two padding adjustments
+			// help keep all cols the same width,
+			// as padding will shrink them.
 
 			// First day col
-			&:nth-child(2) {
-				// needs to know it's the "second" col
-				// (first in list of days)
+			&:nth-child(3) {
+				// This is here b/c it needs to know it's the "second" col
 				&::v-deep .incrementContainer {
-					border-radius: 8px 0 0 8px;
-					padding-left: $outerPad;
-				}
-			}
-
-			// Add spacing to inner elements
-			&:not(&:last-child) {
-				&::v-deep .incrementContainer {
-					padding-right: 5px;
+					padding-left: $innerPad;
 				}
 			}
 
 			// Last day col
-			&:last-child {
+			&:nth-last-child(2) {
 				&::v-deep .incrementContainer {
-					border-radius: 0 8px 8px 0;
-					padding-right: $outerPad;
+					padding-right: $innerPad;
 				}
 			}
 		}
@@ -164,7 +183,7 @@
 				// background-color: $primary;
 				grid-row: span 2;
 				font-size: 1.1rem;
-				padding-right: 20px;
+				margin-right: 15px;
 				text-align: right;
 
 				// Hidden empty first cell
