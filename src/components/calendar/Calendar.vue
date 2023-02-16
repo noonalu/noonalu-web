@@ -94,7 +94,7 @@
 			<div id="rightBgCol"></div>
 		</div>
 	</div>
-	<!-- <Footer /> -->
+	<Footer />
 </template>
 
 <style scoped lang="scss">
