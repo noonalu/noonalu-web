@@ -107,7 +107,7 @@
 
 	#calendar {
 		$outerPad: 15px;
-		$innerPad: $outerPad / 2;
+		$innerPad: calc($outerPad / 2);
 
 		$legend-width: 10%;
 
@@ -146,7 +146,7 @@
 
 		// Account for doubling in inner cols
 		&::v-deep .incrementContainer {
-			padding: $outerPad ($innerPad / 2);
+			padding: $outerPad calc($innerPad / 2);
 		}
 
 		#legend {
