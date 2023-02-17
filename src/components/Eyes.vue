@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { ref, reactive } from "vue";
+
 addEventListener("mousemove", (event) => {});
 
-import { ref, reactive } from "vue";
 const leftRot = ref(0);
 const rightRot = ref(0);
 
-function updateLeft(e) {
+function updateLeft(e: number) {
 	leftRot.value = e;
 }
 
-function updateRight(e) {
+function updateRight(e: number) {
 	rightRot.value = e;
 }
 
@@ -17,7 +18,12 @@ function updateRight(e) {
  * Returns the angle between the center of a given element with id eyeID, and the selected eye and the given mouse positions
  */
 function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
-	let eyepos = document.getElementById(eyeID).getBoundingClientRect();
+	if(document.getElementById(eyeID) === null) {
+		return 0;
+	} 
+
+	let eyepos = document.getElementById(eyeID)!.getBoundingClientRect()
+	
 
 	let xdiff = (eyepos.left + eyepos.right) / 2 - mouseX;
 	let ydiff = (eyepos.top + eyepos.bottom) / 2 - mouseY;
@@ -76,7 +82,7 @@ onmousemove = (event) => {
 
 	#rightEye {
 		position: absolute;
-		width: 45%;
+		width: 46%;
 		height: 100%;
 		right: 0;
 	}
@@ -88,15 +94,15 @@ onmousemove = (event) => {
 
 	.wholeEye {
 		position: absolute;
-		width: 45%;
+		width: 46%;
 		height: 100%;
 	}
 
 	.eyePupil {
 		position: absolute;
-		width: 70%;
-		top: 16.13%;
-		left: 15%;
+		width: 65%;
+		top: 17.85%;
+		left: 17.49%;
 	}
 
 	.eyeCircle{
