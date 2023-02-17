@@ -6,6 +6,35 @@
 	import PrimaryButton from "../common/PrimaryButton.vue"
 	import Footer from "../common/Footer.vue"
 
+
+	function createCalendar() {
+		const data = {
+		    title: "Peter's Cal",
+		    days: [
+		        "monday",
+		        "tuesday",
+		        "wednesday"
+		    ]
+		}
+		const dataString = JSON.stringify(data)
+		fetch('https://api.noonalu.app/calendar', {
+			method: 'POST',
+			mode: 'no-cors', // FIXME: needs CORS to set Content-Type
+			headers: new Headers({
+				'Content-Type': 'application/json',
+				'Content-Length': dataString.length.toString()
+			}),
+			body: dataString,
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("YAY: ", data)
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+	}
+
 </script>
 
 <template>
@@ -14,10 +43,10 @@
 		<img id="hero-logo" src="../../assets/logo-horizontal.svg"/>
 		<TextInput :name="'Name'"/>
 		<DayOfWeek />
-		<PrimaryButton text="Submit" />
+		<PrimaryButton text="Submit" @click="createCalendar" />
 		<!-- TODO: [NLU-33] Time range component -->
 	</div>
-	<Footer />
+	<!-- <Footer /> -->
 </template>
 
 <style scoped lang="scss">
