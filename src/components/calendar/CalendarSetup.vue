@@ -4,13 +4,12 @@
 	import TextInput from "../common/TextInput.vue"
 	import DayOfWeek from "./DayOfWeek.vue"
 	import PrimaryButton from "../common/PrimaryButton.vue"
+	import Footer from "../common/Footer.vue"
 
 </script>
 
 <template>
-
 	<Navbar :withLogo="false" />
-
 	<div id="setup-container">
 		<img id="hero-logo" src="../../assets/logo-horizontal.svg"/>
 		<TextInput :name="'Name'"/>
@@ -18,7 +17,7 @@
 		<PrimaryButton text="Submit" />
 		<!-- TODO: [NLU-33] Time range component -->
 	</div>
-
+	<Footer />
 </template>
 
 <style scoped lang="scss">
@@ -41,5 +40,14 @@
 		background-color: $primary;
 		border-radius: 7px;
 	}
+
+	Footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+
 
 </style>
