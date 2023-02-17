@@ -1,6 +1,11 @@
 
+// MARK: Fonts
+
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+
+// MARK: Global styles
 
 * {
 	box-sizing: border-box;
@@ -12,22 +17,73 @@ html, body {
 }
 
 
+// MARK: Colors
+
+$primary: #FC7753;
+$secondary: #333333;
+
+
 // MARK: Typography
 
-h1, h2 {
-	font-family: 'Varela Round', sans-serif;
-}
+$titleFont: 'Valera Round', sans-serif;
+$bodyFont: 'Roboto', sans-serif;
 
-p {
-	font-family: 'Source Serif 4', serif;
+h1, h2, h3, h4, h5, h6 {
+	font-family: $titleFont;
 }
-
-// Sizing
 
 h1 {
 	font-size: 5rem;
 }
 
 p {
+	font-family: $bodyFont;
 	font-size: 1.5rem;
+}
+
+
+// MARK: Mixins
+
+// The shadow holding this app together
+@mixin hard-shadow($size: 3px) {
+	box-shadow: $size $size 0 0 $secondary;
+}
+
+// Standard style for containers
+@mixin container-style {
+	border: 2px solid $secondary;
+}
+
+// The container header for new-user flow components
+// TODO: Percentages aren't reading parent container width
+@mixin container-header($width, $height) {
+	position: absolute;
+	left: 50%;
+	width: $width;
+	margin-left: -1 * calc($width / 2);
+	// Half over the top border
+	height: $headerHeight;
+	margin-top: -1 * calc($headerHeight / 2);
+	border-radius: 50px;
+	background-color: black;
+	// h/v centering text within our height
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	z-index: 2;
+
+	h3 {
+		font-family: $bodyFont;
+		font-weight: 500; // "Medium"
+		font-size: 1rem;
+		margin: 0;
+		text-align: center;
+		color: white;
+	}
+}
+
+// Ensures the above will behave properly
+// on :active, :focus modes
+@mixin container-header-body {
+	z-index: 1;
 }

@@ -1,27 +1,13 @@
 <script setup lang="ts">
-import GooglyLogoFull from './GooglyLogoFull.vue';
+import Navbar from "../common/Navbar.vue"
+import Footer from "../common/Footer.vue"
 </script>
 
 <template>
-
+	<Navbar />
 	<div id="container-and-footer">
 		<div id="container">
-			<nav>
-				<div id="links">
-					<a href="#">features</a>
-					<a href="#">pricing</a>
-					<a href="#">about</a>
-				</div>
-			</nav>
 
-			<div id="header">
-				<GooglyLogoFull/>
-				<div>
-					<p><i>Schedule things, probably.</i></p>
-				</div>
-			</div>
-			<div id="header">
-			</div>
 			<p id="float-tagline">We make time for everyone.<br /><sub>(we pwomise 👉👈)</sub></p>
 
 			<div id="video">
@@ -37,14 +23,14 @@ import GooglyLogoFull from './GooglyLogoFull.vue';
 				</div>
 
 				<div class="content-rect">
-					<img src="../assets/graph.png" />
+					<img src="../../assets/graph.png" />
 				</div>
 			</div>
 
 
 			<div class="content-blob blob-second">
 				<div class="content-rect">
-					<img src="../assets/shrug.png" />
+					<img src="../../assets/shrug.png" />
 				</div>
 
 				<div class="content-text">
@@ -53,17 +39,8 @@ import GooglyLogoFull from './GooglyLogoFull.vue';
 				</div>
 			</div>
 		</div>
-
-		<!-- Outside of container for flexbox magics -->
-		<footer>
-			<div id="logo-title">
-				<img src="../assets/logo.svg" />
-				<h2>Noonalu</h2>
-			</div>
-			<p><i>Schedule things, probably.</i></p>
-		</footer>
-
 	</div>
+	<Footer />
 </template>
 
 <style scoped lang="scss">
@@ -82,34 +59,6 @@ import GooglyLogoFull from './GooglyLogoFull.vue';
 	// https://css-tricks.com/couple-takes-sticky-footer/
 	#container {
 		flex: 1 0 auto;
-	}
-
-	nav {
-		display: inline-block;
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-
-		#links {
-			margin-right: 2rem;
-			display: flex;
-		}
-
-		a {
-			text-decoration: none;
-			color: black;
-			margin: 20px;
-			font-size: 1.5rem;
-			font-family: 'Varela Round', sans-serif;
-			transition: 0.1s all;
-			border-bottom: 3px solid transparent;
-
-			&:hover {
-				transform: translateY(-3px);
-				color: #FC7753;
-				border-bottom: 3px solid #FC7753;
-			}
-		}
 	}
 
 	#header {
@@ -179,34 +128,6 @@ import GooglyLogoFull from './GooglyLogoFull.vue';
 			width: auto;
 			aspect-ratio: 16 / 9;
 
-		}
-	}
-
-	// MARK: Footer
-
-	footer {
-		flex-shrink: 0;
-		background-color: #181a1b;
-		padding: 2% 15%;
-		color: white;
-
-		#logo-title {
-			display: flex;
-			align-items: center;
-
-			img {
-				height: 1.5rem;
-			}
-
-			h2 {
-				margin: 2px 0 0 10px;
-				font-size: 1.5rem;
-			}
-		}
-
-		p {
-			font-size: 1rem;
-			margin: 10px 0 0 0;
 		}
 	}
 
