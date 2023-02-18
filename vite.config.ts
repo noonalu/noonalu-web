@@ -10,5 +10,23 @@ export default defineConfig({
 				additionalData: `@import "./src/styles/main";`
 			}
 		}
-	}
+	},
+	//settings for proxying requests during development
+	server: {
+    proxy: {
+      '/api': {
+
+				// // For development against local api:
+				// target:'http://localhost:5000',
+
+				// For development against live api:
+				target:'https://api.noonalu.app',
+				// Required additional setting to avoid cors 
+				changeOrigin:true,
+
+				// remove api from path of request
+				rewrite: (path) => path.replace(/^\/api/, ''),
+			},
+		}
+		}
 })
