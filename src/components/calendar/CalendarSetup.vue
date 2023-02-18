@@ -17,9 +17,8 @@
 		    ]
 		}
 		const dataString = JSON.stringify(data)
-		fetch('https://api.noonalu.app/calendar', {
+		fetch('/api/calendar', {
 			method: 'POST',
-			mode: 'no-cors', // FIXME: needs CORS to set Content-Type
 			headers: new Headers({
 				'Content-Type': 'application/json',
 				'Content-Length': dataString.length.toString()
