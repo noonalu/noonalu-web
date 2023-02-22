@@ -12,9 +12,6 @@ import Eyes from './Eyes.vue';
 
 
 <style scoped lang="scss">
-    #googlyEyesContainer {
-        position: absolute;
-    }
     #googlyLogoContainer {
         width: 100%;
         height: 100%;
@@ -22,10 +19,12 @@ import Eyes from './Eyes.vue';
         position: relative;
     }
     #googlyEyesContainer {
-        margin-top: -5.29rem;
-        margin-left: 14.56rem;
-        width: 8.83rem;
+        margin-top: -5.61rem;
+        margin-left: 14.22rem;
+        width: 9.5rem;
         z-index: 10;
+        padding: 5px;
+        position: absolute;
         justify-items: center;
         background-color: white;
     } 

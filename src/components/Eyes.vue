@@ -3,8 +3,8 @@ import { ref, reactive } from "vue";
 
 addEventListener("mousemove", (event) => {});
 
-const leftRot = ref(0);
-const rightRot = ref(0);
+const leftRot = ref(-0.4);
+const rightRot = ref(0.4);
 
 function updateLeft(e: number) {
 	leftRot.value = e;
@@ -49,19 +49,19 @@ onmousemove = (event) => {
 	<div id="logoContainer" :style="{ position: 'relative' }">
 		<div id="leftEye" class="wholeEye">
 			<img class="eyeCircle"
-			src="../assets/o1.svg"/>
+			src="../assets/o.svg"/>
 			<img
 				id="left"
 				class="eyePupil"
 				:style="{
 					transform: 'rotate(' + leftRot + 'rad)',
 				}"
-				src="../assets/eye1.svg"
+				src="../assets/eye.svg"
 			/>
 		</div>
 		<div id="rightEye" class="wholeEye">
 			<img class="eyeCircle"
-				src="../assets/o1.svg"
+				src="../assets/o.svg"
 			/>
 			<img
 				class="eyePupil"
@@ -69,7 +69,7 @@ onmousemove = (event) => {
 				:style="{
 					transform: 'rotate(' + rightRot + 'rad)',
 				}"
-				src="../assets/eye1.svg"
+				src="../assets/eye.svg"
 			/>
 		</div>
 	</div>
