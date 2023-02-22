@@ -3,38 +3,27 @@
 
 <template>
 	<footer>
-		<div id="logo-title">
-			<img src="../../assets/logo.svg" />
-			<h2>Noonalu</h2>
-		</div>
+		<img src="../../assets/logo-minimal.svg" />
 		<p><i>Schedule things, probably.</i></p>
 	</footer>
 </template>
 
 <style scoped lang="scss">
 	footer {
-		flex-shrink: 0;
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		align-items: center;
 		background-color: #181a1b;
-		padding: 2% 15%;
+		padding: 20px 15%;
 		color: white;
 
-		#logo-title {
-			display: flex;
-			align-items: center;
-
-			img {
-				height: 1.5rem;
-			}
-
-			h2 {
-				margin: 2px 0 0 10px;
-				font-size: 1.5rem;
-			}
+		img {
+			height: 1.5rem;
 		}
 
 		p {
 			font-size: 1rem;
-			margin: 10px 0 0 0;
 		}
 	}
 </style>

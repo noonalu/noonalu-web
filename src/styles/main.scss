@@ -5,17 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
 
-// MARK: Global styles
-
-* {
-	box-sizing: border-box;
-}
-
-html, body {
-	margin: 0;
-	padding: 0;
-}
-
+// Note: global styles are in index.html
+// due to this file's import in scoped <style> blocks.
+// (see vite.config.ts)
 
 // MARK: Colors
 

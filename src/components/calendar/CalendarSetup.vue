@@ -4,14 +4,13 @@
 	import TextInput from "../common/TextInput.vue"
 	import DayOfWeek from "./DayOfWeek.vue"
 	import PrimaryButton from "../common/PrimaryButton.vue"
-import GooglyLogoFull from "../GooglyLogoFull.vue";
+	import GooglyLogoFull from "../GooglyLogoFull.vue";
+	import Footer from "../common/Footer.vue"
 
 </script>
 
 <template>
-
 	<Navbar :withLogo="false" />
-
 	<div id="setup-container">
 		<GooglyLogoFull id="hero-logo"/>
 		<TextInput :name="'Name'"/>
@@ -19,7 +18,7 @@ import GooglyLogoFull from "../GooglyLogoFull.vue";
 		<PrimaryButton text="Submit" />
 		<!-- TODO: [NLU-33] Time range component -->
 	</div>
-
+	<Footer />
 </template>
 
 <style scoped lang="scss">
@@ -42,5 +41,14 @@ import GooglyLogoFull from "../GooglyLogoFull.vue";
 		background-color: $primary;
 		border-radius: 7px;
 	}
+
+	Footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+
 
 </style>
