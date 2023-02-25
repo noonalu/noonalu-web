@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 
-addEventListener("mousemove", (event) => {});
+const EYE_DEFAULT_RAD = 0.4
 
-const leftRot = ref(-0.4);
-const rightRot = ref(0.4);
+const leftRotation = ref(-EYE_DEFAULT_RAD);
+const rightRotation = ref(EYE_DEFAULT_RAD);
 
 function updateLeft(e: number) {
-	leftRot.value = e;
+	leftRotation.value = e;
 }
 
 function updateRight(e: number) {
-	rightRot.value = e;
+	rightRotation.value = e;
 }
 
 /**
@@ -22,18 +22,17 @@ function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
 		return 0;
 	} 
 
-	let eyepos = document.getElementById(eyeID)!.getBoundingClientRect()
+	const eyepos = document.getElementById(eyeID)!.getBoundingClientRect()
 	
 
-	let xdiff = (eyepos.left + eyepos.right) / 2 - mouseX;
-	let ydiff = (eyepos.top + eyepos.bottom) / 2 - mouseY;
-	// atan only handles angles up to 180, so need to add 180 if the mouse goes above the eyes
-	let t = Math.PI;
-	if (ydiff < 0) {
-		t = 0;
-	}
+	const xdiff = (eyepos.left + eyepos.right) / 2 - mouseX;
+	const ydiff = (eyepos.top + eyepos.bottom) / 2 - mouseY;
 
-	let angle = t - Math.atan(xdiff / ydiff);
+	// atan only handles angles up to 180, so need to add 180 if the mouse goes above the eyes
+	const atanOffset = ydiff < 0 ? 0 : Math.PI;
+
+	let angle = atanOffset - Math.atan(xdiff / ydiff);
+	console.log(angle)
 
 	return angle;
 }
@@ -54,7 +53,7 @@ onmousemove = (event) => {
 				id="left"
 				class="eyePupil"
 				:style="{
-					transform: 'rotate(' + leftRot + 'rad)',
+					transform: 'rotate(' + leftRotation + 'rad)',
 				}"
 				src="../assets/eye.svg"
 			/>
@@ -67,7 +66,7 @@ onmousemove = (event) => {
 				class="eyePupil"
 				id="right"
 				:style="{
-					transform: 'rotate(' + rightRot + 'rad)',
+					transform: 'rotate(' + rightRotation + 'rad)',
 				}"
 				src="../assets/eye.svg"
 			/>
