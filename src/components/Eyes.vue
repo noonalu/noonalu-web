@@ -32,7 +32,6 @@ function eyeMouseAngle(eyeID: string, mouseX: number, mouseY: number) {
 	const atanOffset = ydiff < 0 ? 0 : Math.PI;
 
 	let angle = atanOffset - Math.atan(xdiff / ydiff);
-	console.log(angle)
 
 	return angle;
 }
