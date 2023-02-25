@@ -53,7 +53,7 @@ const routes = [
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
-});
+})
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
