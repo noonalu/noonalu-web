@@ -4,9 +4,7 @@ import Eyes from './Eyes.vue';
 <template>
     <div id="googlyLogoContainer">
         <img id="logo" src="../assets/logo-horizontal.svg">
-        <div id="googlyEyesContainer">
-            <Eyes id="googlyEyes"/>
-        </div>
+        <Eyes id="googlyEyes"/>
     </div>
 </template>
 
@@ -18,23 +16,15 @@ import Eyes from './Eyes.vue';
         max-width: inherit;
         position: relative;
     }
-    #googlyEyesContainer {
-        margin-top: -5.61rem;
-        margin-left: 14.22rem;
-        width: 9.5rem;
-        z-index: 10;
-        padding: 5px;
-        position: absolute;
-        justify-items: center;
-        background-color: white;
-    } 
     #googlyEyes {
         aspect-ratio: 100/47.5;
+        margin-top: -13.5%;
+        margin-left: 37.04%;
+        width: 22.7%;
+        background-color: white;
+        position: absolute;
     }
     #logo {
         height: inherit;
-    }
-    #logo {
-        z-index: 10;
     }
 </style>
