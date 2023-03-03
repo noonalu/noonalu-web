@@ -4,7 +4,7 @@
 	import TextInput from "../common/TextInput.vue"
 	import DayOfWeek from "./DayOfWeek.vue"
 	import PrimaryButton from "../common/PrimaryButton.vue"
-	import GooglyLogoFull from "../GooglyLogoFull.vue";
+	import GooglyLogoFull from "../common/GooglyLogoFull.vue";
 	import Footer from "../common/Footer.vue"
 
 </script>

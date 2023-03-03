@@ -3,7 +3,7 @@ import Eyes from './Eyes.vue';
 </script>
 <template>
     <div id="googlyLogoContainer">
-        <img id="logo" src="../assets/logo-horizontal.svg">
+        <img id="logo" src="../../assets/logo-horizontal.svg">
         <Eyes id="googlyEyes"/>
     </div>
 </template>

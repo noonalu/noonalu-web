@@ -47,19 +47,19 @@ onmousemove = (event) => {
 	<div id="logoContainer" :style="{ position: 'relative' }">
 		<div id="leftEye" class="wholeEye">
 			<img class="eyeCircle"
-			src="../assets/o.svg"/>
+			src="../../assets/o.svg"/>
 			<img
 				id="left"
 				class="eyePupil"
 				:style="{
 					transform: 'rotate(' + leftRotation + 'rad)',
 				}"
-				src="../assets/eye.svg"
+				src="../../assets/eye.svg"
 			/>
 		</div>
 		<div id="rightEye" class="wholeEye">
 			<img class="eyeCircle"
-				src="../assets/o.svg"
+				src="../../assets/o.svg"
 			/>
 			<img
 				class="eyePupil"
@@ -67,7 +67,7 @@ onmousemove = (event) => {
 				:style="{
 					transform: 'rotate(' + rightRotation + 'rad)',
 				}"
-				src="../assets/eye.svg"
+				src="../../assets/eye.svg"
 			/>
 		</div>
 	</div>
