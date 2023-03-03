@@ -4,6 +4,7 @@
 	import TextInput from "../common/TextInput.vue"
 	import DayOfWeek from "./DayOfWeek.vue"
 	import PrimaryButton from "../common/PrimaryButton.vue"
+	import GooglyLogoFull from "../common/GooglyLogoFull.vue";
 	import Footer from "../common/Footer.vue"
 
 </script>
@@ -11,7 +12,7 @@
 <template>
 	<Navbar :withLogo="false" />
 	<div id="setup-container">
-		<img id="hero-logo" src="../../assets/logo-horizontal.svg"/>
+		<GooglyLogoFull id="hero-logo"/>
 		<TextInput :name="'Name'"/>
 		<DayOfWeek />
 		<PrimaryButton text="Submit" />

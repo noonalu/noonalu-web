@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<!-- Root view of our app -->
@@ -10,5 +9,4 @@
 	<router-view></router-view>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

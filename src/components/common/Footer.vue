@@ -17,6 +17,7 @@
 		background-color: #181a1b;
 		padding: 20px 15%;
 		color: white;
+		z-index: 10;
 
 		img {
 			height: 1.5rem;
